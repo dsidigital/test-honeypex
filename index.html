@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dfeaff">
+    <title>Honeypex - Interface</title>
+    <!-- Critical paint: evita flash negro antes de cargar imágenes/CSS -->
+    <style>
+        html, body { background-color: #dfeaff; }
+
+        .brand-name {
+            font-weight: bolder;
+        }
+
+        .brand-x {
+          color: #0000FF; /* Puedes ajustar el tono de azul aquí */
+          font-weight: bolder;
+        }  
+    </style>
+    <!-- Preload del background para evitar "flash" y mejorar LCP -->
+    <link rel="preload" as="image" href="img/Honeypex%20Background.png" fetchpriority="high">
+    <link rel="preload" as="image" href="img/Honeypex-Background-Mobile.png" media="(max-width: 720px)" fetchpriority="high">
+    <style>
+        
+        /* ========================================
+           CSS 100% RESPONSIVE - MOBILE FIRST
+           Diseño optimizado para todos los dispositivos
+           Sin solapamiento logo/bloques garantizado
+        ======================================== */
+
+        :root {
+            --neon-blue: #1304ea;
+            --neon-purple: #8137ff;
+            --logo-width-mobile: 75vw;
+            --logo-width-tablet: 45vw;
+            --logo-width-desktop: 35vw;
+            --content-gap-bottom: 10vh;
+        }
+
+        /* ========== RESET UNIVERSAL ========== */
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* ========== BASE STYLES ========== */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            background-color: #dfeaff;
+        }
+
+        body {
+            background: transparent;
+        }
+
+        /* ========== BACKGROUND - MOBILE FIRST ========== */
+        .tunnel-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("img/Honeypex-Background-Mobile.png");
+            background-size: cover;
+            background-position: 75% center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #dfeaff;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ========== SCROLL CONTAINER ========== */
+        .ppt-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            position: relative;
+            /* z-index: 1; */
+            scrollbar-width:auto;
+            scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+        }
+        
+        /* Barra de scroll personalizada para Chrome/Safari/Edge */
+        .ppt-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .ppt-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .ppt-container::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+        
+        .ppt-container::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: transparent;
+            padding-bottom: var(--content-gap-bottom);
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 2vh;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            padding: 1vh 4vw;
+            z-index: 1000;
+            border: 1px solid #333;
+            width: 92%;
+            max-width: 92vw;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .logo-nav {
+            font-weight: bold;
+            color: white;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            display: flex;
+            align-items: center;
+        }
+        .logo-nav span { color: var(--neon-purple); margin-left: 2px; }
+
+        .logo-nav-img {
+            width: clamp(7rem, 12vw, 10rem);
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.8rem, 2.5vw, 2rem);
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.65rem, 1.8vw, 0.9rem);
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--neon-blue); }
+
+        .divider {
+            display: none;
+        }
+
+       /* ========== NAVBAR - UMFRAGE ========== */
+
+       .navbar-umfrage {
+            position: fixed;
+            left: 50%;
+            bottom: 2vh;
+            background-color: #000;
+            border-radius: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5vh 1.5vw;
+            z-index: 1000;
+            border: 1px solid #333;
+            width: 92%;
+            max-width: 36vw;
+            min-width: 18rem;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s;
+            transform: translate(-50%, 24px);
+        }
+
+        .navbar-umfrage.visible {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+
+        .nav-links-umfrage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            gap: 1.5vw;
+        }
+
+        .nav-links-umfrage a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.65rem, 1.8vw, 0.9rem);
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-links-umfrage a:hover {
+            color: var(--neon-blue);
+        }
+
+        .navbar-umfrage .divider-umfrage {
+            display: block;
+            width: 1px;
+            min-width: 1px;
+            height: 3vh;
+            background-color: var(--neon-blue);
+            opacity: 1;
+            flex-shrink: 0;
+        }
+        /* ========== MOBILE LAYOUT (BASE) ========== */
+        .global-site-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Logo centrado arriba en mobile */
+        .main-logo-fixed {
+            position: absolute;
+            left: 50%;
+            top: 26vh;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            width: var(--logo-width-mobile);
+            max-width: 320px;
+            height: auto;
+            opacity: 0;
+            animation: emergeDesdeTunelMobile 1.8s cubic-bezier(0.19, 1, 0.22, 1) 0.2s forwards;
+        }
+
+        @keyframes emergeDesdeTunelMobile {
+            0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; filter: blur(12px); }
+            50% { opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; filter: blur(0px); }
+        }
+
+        /* Título principal oculto en mobile */
+        .main-title {
+            display: none;
+        }
+
+        /* ========== CONTENT BLOCKS - MOBILE ========== */
+        .content-block {
+            background: rgba(255, 255, 255, 0.30);
+            padding: 2vh 6vw;
+            border-radius: 20px;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            width: auto;
+            max-width: 88vw;
+            margin: 43vh auto 20vh auto;
+            text-align: left;
+            color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: blockAppear 0.8s ease-out forwards;
+            box-sizing: border-box;
+        }
+
+        @keyframes blockAppear {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Block Intro especial */
+        #block-intro {
+            margin-top: 43vh;
+            opacity: 0;
+            animation: blockAppear 0.8s ease-out 2s forwards;
+        }
+
+        #block-intro .intro-title {
+            font-size: clamp(1.1rem, 3.8vw, 1.4rem);
+            font-weight: 900;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2vh;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        #block-intro .intro-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5vh;
+        }
+
+        #block-intro .chevron-down {
+            width: clamp(2.5rem, 7vw, 3.5rem);
+            height: clamp(2.5rem, 7vw, 3.5rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #block-intro .chevron-down svg {
+            width: 100%;
+            height: 100%;
+            fill: #000;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        #block-intro .intro-subtitle {
+            font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+            font-weight: 500;
+            color: #000;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .content-block h3 {
+            font-size: clamp(1.05rem, 3.5vw, 1.3rem);
+            margin-bottom: 2vh;
+            color: #000;
+            font-weight: 900;
+            line-height: 1.2;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .content-columns {
+            display: flex;
+            gap: 3vw;
+            align-items: flex-start;
+            margin-bottom: 1vh;
+        }
+
+        .content-icon {
+            flex-shrink: 0;
+            width: clamp(2.5rem, 8vw, 3.5rem);
+            height: clamp(2.5rem, 8vw, 3.5rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #000;
+        }
+
+        .content-text {
+            flex: 1;
+            font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+            line-height: 1.5;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .content-block-transparent {
+            background: transparent;
+            padding: 3vh 5vw;
+            border-radius: 20px;
+            backdrop-filter: none;
+            text-align: center;
+            color: #000;
+            border: none;
+            width: 90%;
+            margin: 52vh auto 12vh auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: blockAppear 0.8s ease-out forwards;
+        }
+
+        .content-block-transparent h3 {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            margin-bottom: 3vh;
+            color: #000;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .content-block-transparent .image-text {
+            font-size: clamp(1rem, 3.2vw, 1.25rem);
+            line-height: 1.6;
+            color: #000;
+            margin-bottom: 3vh;
+        }
+
+        .content-image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Bloque 9 - Más espacio inferior en mobile */
+        #umfrage .content-block {
+            margin-top: 43vh;
+        }
+
+        #umfrage .content-text {
+            display: block; /* Asegura que el float funcione correctamente */
+            overflow: hidden; /* Limpia el flujo si es necesario */
+        }
+
+        .survey-button {
+            float: right;
+            width: clamp(100px, 25vw, 160px);
+            padding-right: 1vh;
+            margin-top: 60vh;
+            margin-bottom: 1vh;
+            transition: transform 0.3s ease;
+            shape-outside:padding-box;
+            shape-margin: 0.1vh;
+        }
+
+        .survey-button:hover {
+            transform: scale(1.05);
+        }
+
+        .survey-button img {
+            width: 60%;
+            height: auto;
+            display: block;
+            margin-bottom: 1vh;
+        }
+
+        /* Estilos específicos para el bloque de la encuesta */
+
+        /* ========================================
+           MOBILE (0px - 767px)
+           Consolidado: Todos los estilos móviles en una sola media query
+        ======================================== */
+        @media (max-width: 767px) {
+            /* Soberanía del viewport */
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+            }
+
+            .tunnel-bg {
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .navbar {
+                width: 92%;
+                max-width: 92%;
+                padding: 1vh 3vw;
+            }
+
+            .navbar-umfrage {
+                width: 92%;
+                max-width: 92%;
+                min-width: unset;
+            }
+
+            .content-block {
+                max-width: 88vw;
+                padding: 2vh 6vw;
+            }
+
+            /* Ocultar iconos en pantallas pequeñas para ahorrar espacio */
+            .content-icon {
+                display: none;
+            }
+
+            /* Más separación entre el logo y los bloques 1-8 */
+            #features .content-block,
+            #block-2 .content-block,
+            #block-3 .content-block,
+            #block-4 .content-block,
+            #block-5 .content-block,
+            #block-6 .content-block,
+            #block-7 .content-block,
+            #block-8 .content-block {
+                margin-top: 48vh;
+                margin-bottom: 16vh;
+            }
+
+            /* Ajuste general del bloque umfrage */
+            #umfrage .content-block {
+                margin-top: 52vh;
+                margin-bottom: 22vh;
+                padding-top: 4vh;
+                padding-bottom: 6vh;
+                position: relative;
+            }
+
+            /* Título centrado en umfrage */
+            #umfrage .content-block h3 {
+                text-align: center;
+                margin-bottom: 3vh;
+            }
+
+            /* Texto principal en umfrage */
+            #umfrage .content-text {
+                font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+                line-height: 1.6;
+                overflow: hidden;
+            }
+
+            /* Botón encuesta: abajo a la derecha */
+            #umfrage .survey-button {
+                float: right;
+                width: 140px;
+                margin-left: 16px;
+                margin-top: 1vh;
+                margin-bottom: 1vh;
+                shape-outside: inset(0 round 8px);
+                shape-margin: 12px;
+            }
+
+            #umfrage .survey-button img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .survey-container {
+            display: flex;
+            flex-direction: column; /* Por defecto en móvil: uno bajo el otro */
+            align-items: center;
+            gap: 20px;
+        }
+
+        .survey-image-link {
+            display: block;
+            max-width: 280px; /* Ajusta según prefieras el tamaño del botón */
+            transition: transform 0.3s ease;
+        }
+
+        .survey-image-link:hover {
+            transform: scale(1.05);
+        }
+
+        .survey-img {
+            width: 20%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* ========================================
+           TABLET (768px - 1023px)
+        ======================================== */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            :root {
+                --content-gap-bottom: 12vh;
+            }
+
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            body, .tunnel-bg {
+                background-image: url("img/Honeypex%20Background.png");
+                background-position: center center;
+                background-attachment: scroll;
+            }
+
+            .tunnel-bg {
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .navbar {
+                width: 92%;
+                max-width: 92%;
+                padding: 1.2vh 3vw;
+            }
+
+            .navbar-umfrage {
+                width: 92%;
+                max-width: 70%;
+                padding: 1vh 2vw;
+            }
+            
+            .divider {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 3vh;
+                background-color: #0044ff;
+            }
+
+            .navbar-umfrage .divider-umfrage {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 2.5vh;
+                background-color: #0044ff;
+            }
+
+            .main-logo-fixed {
+                width: var(--logo-width-tablet);
+                max-width: 400px;
+                top: 20vh;
+            }
+
+            #block-intro {
+                margin-top: 48vh;
+                max-width: 70vw;
+            }
+
+            .content-block {
+                max-width: 70vw;
+                margin: 48vh auto 10vh auto;
+                padding: 2.5vh 4vw;
+            }
+        }
+
+        /* ========================================
+           DESKTOP/LAPTOP (1024px - 1919px)
+           GRID LAYOUT 2 COLUMNAS
+        ======================================== */
+        @media (min-width: 1024px) {
+            :root {
+                --content-gap-bottom: 12vh;
+            }
+
+            body, .tunnel-bg {
+                background-image: url("img/Honeypex%20Background.png");
+                background-position: center center;
+                background-attachment: fixed;
+            }
+
+            .tunnel-bg {
+                transform: none;
+            }
+
+            .navbar {
+                width: auto;
+                max-width: 1000px;
+                padding: 1.2vh 2.5vw;
+                top: 3vh;
+            }
+
+            .navbar-umfrage {
+                width: auto;
+                max-width: 800px;
+                padding: 1vh 2vw;
+                bottom: 3vh;
+            }
+
+            .nav-links, .nav-links-umfrage {
+                gap: 2vw;
+            }
+
+            .divider {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 3vh;
+                background-color: #0044ff;
+            }
+
+            .navbar-umfrage .divider-umfrage {
+                width: 1px;
+                min-width: 1px;
+                height: 2.5vh;
+            }
+
+            .logo-nav {
+                margin-right: 2.5vw;
+            }
+
+            /* ========== GRID LAYOUT ========== */
+            .global-site-container {
+                display: grid;
+                grid-template-columns: 40% 60%;
+                grid-template-rows: 1fr;
+                max-width: 100%;
+                gap: 0;
+                padding: 0;
+            }
+
+            /* Logo fijo en columna izquierda */
+            .main-logo-fixed {
+                position: fixed;
+                left: 5vw;
+                top: 50%;
+                transform: translateY(-50%);
+                width: var(--logo-width-desktop);
+                max-width: 650px;
+                grid-column: 1;
+                animation: emergeDesdeTunelDesktop 3.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+                z-index: 50;
+            }
+
+            @keyframes emergeDesdeTunelDesktop {
+                0% { 
+                    transform: translate(calc(55vw - 5vw), calc(12vh - 50%)) scale(0.08); 
+                    opacity: 0; 
+                    filter: blur(12px); 
+                }
+                35% { opacity: 0.6; }
+                100% { 
+                    transform: translate(0, -50%) scale(1); 
+                    opacity: 1; 
+                    filter: blur(0px); 
+                }
+            }
+
+            /* Contenedor scroll en columna derecha */
+            .ppt-container {
+                grid-column: 2;
+                margin-left: 3vw;
+                padding-right: 3vw;
+            }
+
+            section {
+                justify-content: flex-start;
+                padding-left: 0;
+                min-height: 100vh;
+            }
+
+            /* Bloques en columna derecha sin margin-left fijo */
+            .content-block {
+                width: auto;
+                max-width: 90%;
+                margin: 40vh 0 4vh 0;
+                padding: 1.8vh 2.5vw;
+            }
+
+            #block-intro {
+                margin-top: 40vh;
+                margin-bottom: 4vh;
+            }
+
+            /* Restaurar margen normal para umfrage en desktop */
+            #umfrage .content-block {
+                margin-bottom: 4vh;
+            }
+
+            #block-intro .intro-title {
+                font-size: clamp(1.5rem, 2vw, 2.2rem);
+                text-align: center;
+            }
+
+            #block-intro .intro-subtitle {
+                font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+            }
+
+            .content-block h3 {
+                font-size: clamp(1.3rem, 1.65vw, 1.9rem);
+                text-align: center;
+            }
+
+            .content-text {
+                font-size: clamp(1rem, 1.25vw, 1.35rem);
+            }
+
+            .survey-button {
+                width: clamp(100px, 12vw, 140px);
+                margin-left: 2.5vh;
+                margin-bottom: 0;
+                margin-top: 12vh;
+            }
+
+            .survey-button img {
+                width: 60%;
+            }
+
+            .content-icon {
+                width: clamp(2.8rem, 3.2vw, 3.8rem);
+                height: clamp(2.8rem, 3.2vw, 3.8rem);
+            }
+
+            .content-block-transparent {
+                width: auto;
+                max-width: 90%;
+                margin: 0 0 8vh 0;
+            }
+
+            .content-block-transparent .image-text {
+                font-size: clamp(1.3rem, 1.6vw, 1.8rem);
+            }
+
+            .survey-container {
+                flex-direction: row; /* Texto e imagen lado a lado */
+                align-items: flex-end;
+            }
+    
+            .survey-text {
+                flex: 1;
+            }
+        
+            .survey-image-link {
+                flex-shrink: 0;
+                max-width: 320px;
+            }
+
+            /* Título principal visible en desktop */
+            .main-title {
+                display: block;
+                position: fixed;
+                top: calc(50% - 18vh);
+                left: 5vw;
+                z-index: 102;
+                opacity: 0;
+                animation: titleAppear 1s ease-out 2.5s forwards;
+            }
+
+            .main-title .projekt {
+                font-size: clamp(2.2rem, 2.8vw, 3.5rem);
+                font-weight: 900;
+                color: #000;
+                letter-spacing: 0.05em;
+                margin: 0;
+                line-height: 1;
+                text-transform: uppercase;
+            }
+
+            .main-title .honeypex {
+                margin-left: 4vw !important;
+                font-size: clamp(2.5rem, 3.2vw, 4rem);
+                font-weight: 900;
+                background: linear-gradient(90deg, #00daff 0%, #8137ff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                letter-spacing: 0.05em;
+                margin: 0;
+                line-height: 1;
+                text-transform: uppercase;
+            }
+
+            @keyframes titleAppear {
+                0% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+        }
+
+        /* ========================================
+           LARGE DESKTOP (1440px - 1919px)
+        ======================================== */
+        @media (min-width: 1440px) and (max-width: 1919px) {
+            .global-site-container {
+                grid-template-columns: 38% 62%;
+            }
+
+            .main-logo-fixed {
+                width: 32vw;
+                max-width: 700px;
+                left: 6vw;
+            }
+
+            .main-title {
+                left: 6vw;
+            }
+
+            .ppt-container {
+                margin-left: 4vw;
+                padding-right: 4vw;
+            }
+
+            .content-block {
+                max-width: 88%;
+            }
+        }
+
+        /* ========================================
+           4K & ULTRA-WIDE (1920px+)
+        ======================================== */
+        @media (min-width: 1920px) {
+            .global-site-container {
+                max-width: 2600px;
+                margin: 0 auto;
+                grid-template-columns: 35% 65%;
+                padding: 0 4vw;
+            }
+
+            .navbar {
+                max-width: 1400px;
+            }
+
+            .navbar-umfrage {
+                max-width: 1200px;
+            }
+
+            .navbar-umfrage .divider-umfrage {
+                width: 1px;
+                min-width: 1px;
+            }
+
+            .main-logo-fixed {
+                width: 30vw;
+                max-width: 850px;
+                left: 8vw;
+            }
+
+            .main-title {
+                left: 8vw;
+            }
+
+            .ppt-container {
+                margin-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            .content-block {
+                max-width: 85%;
+                padding: 2vh 2.2vw;
+            }
+
+            #block-intro .intro-title {
+                font-size: clamp(2rem, 2.2vw, 2.8rem);
+                text-align: center;
+            }
+
+            .content-block h3 {
+                font-size: clamp(1.6rem, 1.85vw, 2.3rem);
+                text-align: center;
+            }
+
+            .content-text {
+                font-size: clamp(1.2rem, 1.4vw, 1.7rem);
+            }
+
+            .content-icon {
+                width: clamp(3.2rem, 3.5vw, 4.5rem);
+                height: clamp(3.2rem, 3.5vw, 4.5rem);
+            }
+        }
+
+        /* ========================================
+           FIX DISPOSITIVOS TÁCTILES
+        ======================================== */
+        @media (hover: none) and (pointer: coarse) and (max-width: 1023px) {
+            body, .tunnel-bg {
+                background-image: url("img/Honeypex-Background-Mobile.png") !important;
+                background-attachment: scroll !important;
+            }
+
+            .main-logo-fixed {
+                animation-duration: 1.8s !important;
+            }
+        }
+
+        /* ========================================
+           ORIENTACIÓN LANDSCAPE EN MÓVILES
+        ======================================== */
+        @media (max-width: 1023px) and (orientation: landscape) {
+            .main-logo-fixed {
+                top: 18vh;
+                width: 30vw;
+                max-width: 250px;
+            }
+
+            #block-intro {
+                margin-top: 42vh;
+            }
+
+            section {
+                min-height: 120vh;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="tunnel-bg"></div>
+
+    <header class="navbar">
+        <div class="logo-nav">
+            <a href="index.html">
+                <img src="img/Honeypex Logo Wisepex.png" alt="Logo Honeypex Wisepex" class="logo-nav-img">
+            </a>        
+        </div>
+        <div class="nav-links">
+            <div class="divider"></div>
+            <a href="#features">FEATURES</a>            
+            <div class="divider"></div>
+            <a href="#umfrage">UMFRAGE</a>            
+            <div class="divider"></div>
+            <a href="https://dsidigital.github.io/honeypex.mehr/">MEHR</a>        
+        </div>
+    </header>
+
+    <div class="global-site-container">
+        <img src="img/Projektlogo-single.png" alt="Projekt Honeypex" class="main-logo-fixed">
+
+        <div class="ppt-container">
+        <section>
+            <!-- Block Intro -->
+            <div id="block-intro" class="content-block">
+                <h3 class="intro-title">REALE PROBLEME. EINE EINFACHE PLATTFORM</h3>
+                <div class="intro-content">
+                    <div class="chevron-down">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <p class="intro-subtitle">Scrollen, Überblick verschaffen & Feedback geben</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 1 -->
+        <section id="features">
+            <div class="content-block">
+                <h3>KEIN IT-GROßPROJEKT – BEZAHLBAR AUCH FÜR KMU</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        <span class="brand-name">honeype<span class="brand-x">x</span></span> ist stand-alone, klar abgegrenzt und transparent bepreist. Fristen bleiben sichtbar, Zuständigkeiten klar, Nachweise jederzeit verfügbar. Prüfpflichten im Griff – ohne Excel-Chaos, ohne Projekt-Marathon, ohne Kostenüberraschungen.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 2 -->
+        <section id="block-2">
+            <div class="content-block">
+                <h3>HU-FRISTENMANAGEMENT FÜR FIRMENFAHRZEUGE</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        Alle HU-Fristen zentral überwacht. <span class="brand-name">honeype<span class="brand-x">x</span></span> macht Risiken früh sichtbar und zeigt klaren Handlungsbedarf. Mehr Verfügbarkeit, weniger Aufwand, volle Planungssicherheit.
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 3 -->
+        <section id="block-3">
+            <div class="content-block">
+                <h3>EINSATZORTABHÄNGIGE PRÜFINTERVALLE</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        Gleiche Maschine, unterschiedliche Einsatzbedingungen. <span class="brand-name">honeype<span class="brand-x">x</span></span> unterstützt dabei, passende Prüfintervalle je Einsatzort festzulegen und nachvollziehbar zu dokumentieren. Mehr Rechtssicherheit, klare Nachweise, weniger Risiko im Ernstfall.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 4 -->
+        <section id="block-4">
+            <div class="content-block">
+                <h3>PRÜFMANAGEMENT FÜR SICHERHEITSRELEVANTES</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        Einsetzbar für Sicherheitsbeleuchtung, Feuerlöscher, etc. <span class="brand-name">honeype<span class="brand-x">x</span></span> unterstützt bei der Planung von Prüfungen sowie der revisionssicheren Dokumentation. Klare Nachweise, weniger Haftungsrisiko, funktionierende Sicherheit im Ernstfall.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 5 -->
+        <section id="block-5">
+            <div class="content-block">
+                <h3>UVV-PRÜFMANAGEMENT FÜR DEN FUHRPARK</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        UVV-Prüfungen, Fristen und Zuständigkeiten zentral im Blick. <span class="brand-name">honeype<span class="brand-x">x</span></span> erinnert deutlich an anstehende Prüfungen und hält Nachweise gebündelt. Mehr Rechtssicherheit, weniger Organisationsrisiko, saubere Grundlage im Ernstfall.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 6 -->
+        <section id="block-6">
+            <div class="content-block">
+                <h3>FÜHRERSCHEINKONTROLLE FÜR MITARBEITENDE</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        Regelmäßige Führerscheinkontrollen klar organisiert und nachvollziehbar dokumentiert. <span class="brand-name">honeype<span class="brand-x">x</span></span> erinnert an fällige Nachweise und hält Prüfungen zentral vor. Weniger Verwaltungsaufwand, saubere Nachweise, klare Absicherung für Unternehmen.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 7 -->
+        <section id="block-7">
+            <div class="content-block">
+                <h3>RESERVIERUNG VON FAHRZEUGEN & MASCHINEN</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        Mitarbeitende reservieren Fahrzeuge und Arbeitsmittel verbindlich für ihren Einsatz. <span class="brand-name">honeype<span class="brand-x">x</span></span> macht Verfügbarkeiten transparent und blockt Zeiten gezielt, z. B. bei Reparaturen oder Wartungen. Weniger Ausfälle, bessere Planung, sichere Einsatzbereitschaft.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 8 -->
+        <section id="block-8">
+            <div class="content-block">
+                <h3>SCHADENSMANAGEMENT</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        Schäden an Fahrzeugen und Maschinen strukturiert erfassen und nachvollziehbar dokumentieren. <span class="brand-name">honeype<span class="brand-x">x</span></span> schafft Transparenz über Entstehung, Zeitpunkt und Kontext. Klare Abgrenzung von Verantwortung, saubere Weitergabe an Werkstatt oder Service, weniger Reibung im Betrieb.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 9 - UMFRAGE -->
+        <section id="umfrage">
+            <div class="content-block">
+                <h3>UMFRAGE</h3>
+                <div class="content-columns">
+                    <div class="content-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                    <div class="content-text">
+                        <a href="https://forms.office.com/e/y8LCYZbFgk" target="_blank" class="survey-button">
+                            <img src="img/Button Umfrage4.png" alt="An Umfrage teilnehmen">
+                        </a>
+                        
+                        Wir entwickeln <span class="brand-name">honeype<span class="brand-x">x</span></span>, um Prüfpflichten, Fristen und Fuhrparkorganisation für Betriebe einfacher, sicherer und bezahlbar zu machen. Nimm an unserer kurzen Umfrage teil und hilf uns zu verstehen, welche Funktionen für dich wirklich relevant sind. Wenn du möchtest, kannst du zum Abschluss an unserem Gewinnspiel teilnehmen.
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-umfrage">
+                <div class="nav-links-umfrage">
+                    <a href="https://dsidigital.github.io/honeypex.kontakt/">KONTAKT</a>                    
+                    <div class="divider-umfrage"></div>
+                    <a href="https://dsidigital.github.io/honeypex.kontakt/#datenschutz">DATENSCHUTZ</a>                    
+                    <div class="divider-umfrage"></div>
+                    <a href="https://dsidigital.github.io/honeypex.kontakt/#impressum">IMPRESSUM</a>                
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+    <script>
+        // Scroll al top al cargar (solo si no hay hash)
+        window.onbeforeunload = function () { window.scrollTo(0, 0); };
+        function scrollToHash() {
+            const container = document.querySelector('.ppt-container');
+            if (!container) return;
+
+            const hash = window.location.hash;
+            if (!hash) {
+                container.scrollTop = 0;
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            const target = document.querySelector(hash);
+            if (target) {
+                container.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+            }
+        }
+        window.addEventListener('load', scrollToHash);
+        window.addEventListener('hashchange', scrollToHash);
+        if (history.scrollRestoration) history.scrollRestoration = 'manual';
+
+        // Navegación
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
+
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
+                const container = document.querySelector('.ppt-container');
+                if (targetSection && container) {
+                    container.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        //Navbar Umfrage visible cuando el bloque 9 es visible
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const umfrage = document.querySelector('#umfrage');
+            const navUmfrage = document.querySelector('.navbar-umfrage');
+
+            const observerOptions = {
+                root: null, // usa el viewport del navegador
+                threshold: 0.3 // se activa cuando el 30% del bloque es visible
+            };
+        
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navUmfrage.classList.add('visible');
+                    } else {
+                        navUmfrage.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+        
+            if (umfrage) observer.observe(umfrage);
+            });
+
+        /*JS navbar-umfrage */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const umfrage = document.querySelector('#umfrage');
+            const navUmfrage = document.querySelector('.navbar-umfrage');
+
+            if (!umfrage || !navUmfrage) return;
+
+            // Mostrar navbar-umfrage SOLO cuando estamos cerca del fondo de la página
+            function checkScroll() {
+                const scrollPosition = window.scrollY + window.innerHeight;
+                const pageHeight = document.documentElement.scrollHeight;
+
+                // Cuando el usuario esté a menos de 120px del fondo
+                if (pageHeight - scrollPosition < 120) {
+                    navUmfrage.classList.add('visible');
+                } else {
+                    navUmfrage.classList.remove('visible');
+                }
+            }
+        });
+        
+        window.addEventListener("load", function () {
+            if (window.location.hash) {
+              const target = document.querySelector(window.location.hash);
+              if (target) {
+                setTimeout(() => {
+                  target.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+              }
+            }
+          });
+
+    </script>
+</body>
+</html>
