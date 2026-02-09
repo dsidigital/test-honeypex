@@ -475,6 +475,18 @@
                 padding: 1vh 3vw;
             }
 
+            .logo-nav-img {
+                width: clamp(6rem, 16vw, 8rem);
+            }
+
+            .nav-links {
+                gap: clamp(0.6rem, 3vw, 1rem);
+            }
+
+            .nav-links a {
+                font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+            }
+
             .navbar-umfrage {
                 width: 92%;
                 max-width: 92%;
@@ -981,6 +993,39 @@
 
             section {
                 min-height: 120vh;
+            }
+        }
+
+        /* Navbar superior: centrado consistente en movil/tablet */
+        @media (max-width: 1023px) {
+            .navbar {
+                justify-content: center;
+                gap: clamp(0.5rem, 2vw, 1.2rem);
+            }
+
+            .logo-nav {
+                margin-right: 0;
+                flex-shrink: 0;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: clamp(0.55rem, 2.4vw, 1rem);
+            }
+
+            .nav-links .divider {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 2.4vh;
+                background-color: #0044ff;
+                flex-shrink: 0;
+            }
+
+            .navbar-umfrage {
+                width: 82%;
+                max-width: 28rem;
+                min-width: unset;
             }
         }
 
