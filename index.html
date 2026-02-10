@@ -423,31 +423,35 @@
             margin-top: 43vh;
         }
 
+        /* UMFRAGE – base mobile-first con texto envolviendo el botón */
         #umfrage .content-text {
-            display: block; /* Asegura que el float funcione correctamente */
-            overflow: hidden; /* Limpia el flujo si es necesario */
+            display: block;
+            line-height: 1.6;
         }
 
-        .survey-button {
+        #umfrage .content-text::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #umfrage .survey-button {
             float: right;
-            width: clamp(80px, 20vw, 120px);
-            padding-right: 1vh;
-            margin-top: 20vh;
-            margin-bottom: 1vh;
+            width: clamp(90px, 20vw, 130px);
+            margin: 0.3rem 0 0.7rem 1rem;
+            shape-outside: inset(0 round 10px);
+            shape-margin: 14px;
             transition: transform 0.3s ease;
-            shape-outside:padding-box;
-            shape-margin: 0.1vh;
         }
 
         .survey-button:hover {
             transform: scale(1.05);
         }
 
-        .survey-button img {
-            width: 60%;
+        #umfrage .survey-button img {
+            width: 100%;
             height: auto;
             display: block;
-            margin-bottom: 1vh;
         }
 
         /* Estilos específicos para el bloque de la encuesta */
@@ -538,15 +542,13 @@
                 overflow: hidden;
             }
 
-            /* Botón encuesta: abajo a la derecha */
+            /* Botón encuesta: derecha con separación del texto */
             #umfrage .survey-button {
                 float: right;
-                width: 100px;
-                margin-left: 18px;
-                margin-top: 1vh;
-                margin-bottom: 1vh;
+                width: clamp(88px, 24vw, 112px);
+                margin: 0.25rem 0 0.65rem 0.9rem;
                 shape-outside: inset(0 round 8px);
-                shape-margin: 16px;
+                shape-margin: 12px;
             }
 
             #umfrage .survey-button img {
@@ -790,15 +792,16 @@
                 font-size: clamp(1rem, 1.25vw, 1.35rem);
             }
 
-            .survey-button {
-                width: clamp(90px, 10vw, 120px);
-                margin-left: 5vh;
-                margin-bottom: 0;
-                margin-top: 12vh;
+            #umfrage .survey-button {
+                float: right;
+                width: clamp(96px, 9vw, 128px);
+                margin: 0.35rem 0 0.8rem 1.2rem;
+                shape-outside: inset(0 round 10px);
+                shape-margin: 14px;
             }
 
-            .survey-button img {
-                width: 60%;
+            #umfrage .survey-button img {
+                width: 100%;
             }
 
             .content-icon {
@@ -1207,17 +1210,17 @@
                     </div>
                 </div>
             </div>
-
-            <div class="navbar-umfrage">
-                <div class="nav-links-umfrage">
-                    <a href="https://dsidigital.github.io/honeypex.kontakt/">KONTAKT</a>                    
-                    <div class="divider-umfrage"></div>
-                    <a href="https://dsidigital.github.io/honeypex.kontakt/#datenschutz">DATENSCHUTZ</a>                    
-                    <div class="divider-umfrage"></div>
-                    <a href="https://dsidigital.github.io/honeypex.kontakt/#impressum">IMPRESSUM</a>                
-                </div>
-            </div>
         </section>
+
+        <div class="navbar-umfrage">
+            <div class="nav-links-umfrage">
+                <a href="https://dsidigital.github.io/honeypex.kontakt/">KONTAKT</a>                    
+                <div class="divider-umfrage"></div>
+                <a href="https://dsidigital.github.io/honeypex.kontakt/#datenschutz">DATENSCHUTZ</a>                    
+                <div class="divider-umfrage"></div>
+                <a href="https://dsidigital.github.io/honeypex.kontakt/#impressum">IMPRESSUM</a>                
+            </div>
+        </div>
 
     </div>
 </div>
