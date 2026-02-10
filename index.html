@@ -521,17 +521,14 @@
             }
 
             /* Ajuste general del bloque umfrage */
-            #umfrage {
-               scroll-margin-top: 52vh;
-               scroll-snap-align: none; /* Desactivar snap para evitar solapamiento */
-           }
-
             #umfrage .content-block {
-                margin-top: 62vh;
-                margin-bottom: 18vh;
-                padding-top: 2.5vh;
-                padding-bottom: 3.5vh;
+                background: rgba(255, 255, 255, 0.54);
+                margin-top: 13rem;
+                margin-bottom: 22vh;
+                padding-top: 4vh;
+                padding-bottom: 6vh;
                 position: relative;
+                z-index: 100;
             }
 
             /* Título centrado en umfrage */
@@ -550,8 +547,8 @@
             /* Botón encuesta: más abajo verticalmente en móviles */
             #umfrage .survey-button {
                 float: right;
-                width: clamp(72px, 20vw, 96px);
-                margin: 2.2rem 0 0.5rem 0.8rem;                
+                width: clamp(88px, 24vw, 112px);
+                margin: 3rem 0 0.65rem 0.9rem;
                 shape-outside: inset(0 round 8px);
                 shape-margin: 12px;
             }
@@ -655,21 +652,11 @@
                 padding: 2.5vh 4vw;
             }
 
-            /* Ajuste para bloque umfrage en tablets */
-            #umfrage {
-               scroll-margin-top: 48vh;
-               scroll-snap-align: none; /* Desactivar snap para evitar solapamiento */
-           }
-           
-            #umfrage .content-block {
-                margin-top: 55vh;
-            }
-
             /* Botón encuesta: más abajo verticalmente en tablets */
             #umfrage .survey-button {
                 float: right;
-                width: clamp(82px, 14vw, 105px);
-                margin: 2.2rem 0 0.6rem 0.9rem;                
+                width: clamp(95px, 18vw, 120px);
+                margin: 2.8rem 0 0.7rem 1rem;
                 shape-outside: inset(0 round 10px);
                 shape-margin: 13px;
             }
@@ -681,17 +668,6 @@
             }
         }
 
-       /* ========================================
-           MENOS DE 1023px
-        ======================================== */
-        @media (max-width: 1023px) {
-            #umfrage .content-text {
-                font-size: clamp(0.9rem, 2.6vw, 1.05rem);
-                line-height: 1.5;
-            }
-        }
-
-       
         /* ========================================
            DESKTOP/LAPTOP (1024px - 1919px)
            GRID LAYOUT 2 COLUMNAS
@@ -778,7 +754,7 @@
                 }
                 35% { opacity: 0.6; }
                 100% { 
-                    transform: translate(0, -50%) scale(1); 
+                    transform: translate(0, -50%) scale(1);
                     opacity: 1; 
                     filter: blur(0px); 
                 }
@@ -810,11 +786,7 @@
                 margin-bottom: 4vh;
             }
 
-            /* Ajuste para umfrage en desktop */
-            #umfrage {
-                scroll-margin-top: 15vh;
-            }
-            
+            /* Restaurar margen normal para umfrage en desktop */
             #umfrage .content-block {
                 margin-bottom: 4vh;
             }
@@ -1043,16 +1015,6 @@
                 min-height: 120vh;
             }
 
-            /* Ajuste para umfrage en landscape */
-            #umfrage {
-                scroll-margin-top: 42vh;
-                scroll-snap-align: none; /* Desactivar snap para evitar solapamiento */
-            }
-            
-            #umfrage .content-block {
-                margin-top: 50vh;
-            }
-
             /* Botón encuesta: centrado verticalmente en landscape */
             #umfrage .survey-button {
                 float: right;
@@ -1093,56 +1055,6 @@
                 width: 82%;
                 max-width: 28rem;
                 min-width: unset;
-            }
-        }
-
-        /* Pantallas muy alargadas (aspect ratio alto) */
-        @media (max-width: 767px) and (min-aspect-ratio: 9/19) {
-            #umfrage .content-block {
-                margin-top: 68vh;
-            }
-            
-            #umfrage {
-                scroll-margin-top: 58vh;
-                scroll-snap-align: none;
-            }
-        }
-
-        /* Tablets con pantallas alargadas */
-        @media (min-width: 768px) and (max-width: 1023px) and (min-aspect-ratio: 9/16) {
-            #umfrage .content-block {
-                margin-top: 58vh;
-            }
-            
-            #umfrage {
-                scroll-margin-top: 50vh;
-                scroll-snap-align: none;
-            }
-        }
-
-        /* Forzar desactivación de snap en todos los móviles/tablets */
-        @media (max-width: 1023px) {
-            #umfrage {
-                scroll-snap-align: none !important;
-                scroll-snap-stop: normal !important;
-            }
-        }
-
-        /* Ajustes para dispositivos con altura específica (pantallas comunes) */
-        @media (max-width: 767px) and (min-height: 700px) and (max-height: 900px) {
-            #umfrage .content-block {
-                margin-top: 65vh !important;
-            }
-        }
-
-        /* Para tablets horizontales o dispositivos anchos pero cortos */
-        @media (min-width: 768px) and (max-width: 1023px) and (max-height: 600px) {
-            #umfrage .content-block {
-                margin-top: 60vh !important;
-            }
-            
-            #umfrage {
-                scroll-margin-top: 52vh !important;
             }
         }
 
@@ -1435,96 +1347,11 @@
             }
           });
 
-        /* PREVENCIÓN DE SOLAPAMIENTO LOGO-UMFRAGE */
-        document.addEventListener('DOMContentLoaded', () => {
-            function preventLogoOverlap() {
-                const logo = document.querySelector('.main-logo-fixed');
-                const umfrageSection = document.querySelector('#umfrage');
-                const umfrageBlock = document.querySelector('#umfrage .content-block');
-                
-                if (!logo || !umfrageSection || !umfrageBlock) return;
-
-                // Calcular la posición segura basada en el logo
-                const logoRect = logo.getBoundingClientRect();
-                const logoBottom = logoRect.bottom;
-                const viewportHeight = window.innerHeight;
-                const viewportWidth = window.innerWidth;
-                
-                // Espacio mínimo seguro más grande en móviles/tablets
-                let minSafeGapVh = 0.25; // 25vh por defecto
-                
-                if (viewportWidth <= 767) {
-                    // Móviles: 28vh de margen
-                    minSafeGapVh = 0.28;
-                } else if (viewportWidth <= 1023) {
-                    // Tablets: 26vh de margen
-                    minSafeGapVh = 0.26;
-                }
-                
-                const minSafeGap = viewportHeight * minSafeGapVh;
-                const safeTopPosition = logoBottom + minSafeGap;
-                
-                // Calcular el margen superior necesario en vh
-                const requiredMarginVh = (safeTopPosition / viewportHeight) * 100;
-                
-                // Margen mínimo basado en dispositivo
-                let minimumMarginVh = 62;
-                if (viewportWidth <= 767) {
-                    minimumMarginVh = 65;
-                } else if (viewportWidth <= 1023) {
-                    minimumMarginVh = 58;
-                }
-                
-                // Siempre aplicar el margen calculado (más agresivo)
-                const finalMarginVh = Math.max(requiredMarginVh, minimumMarginVh);
-                umfrageBlock.style.marginTop = `${finalMarginVh}vh`;
-                
-                // Ajustar scroll-margin-top del section (más conservador)
-                const scrollMarginVh = Math.max(finalMarginVh - 8, minimumMarginVh - 8);
-                umfrageSection.style.scrollMarginTop = `${scrollMarginVh}vh`;
-                
-                // Forzar scroll-snap-align none en móviles/tablets
-                if (viewportWidth <= 1023) {
-                    umfrageSection.style.scrollSnapAlign = 'none';
-                }
-            }
-
-            // Ejecutar al cargar y al cambiar el tamaño de pantalla
-            preventLogoOverlap();
-            window.addEventListener('resize', preventLogoOverlap);
-            window.addEventListener('orientationchange', () => {
-                setTimeout(preventLogoOverlap, 100);
-            });
-            
-            // Re-ejecutar después de las animaciones del logo
-            setTimeout(preventLogoOverlap, 1000);
-            setTimeout(preventLogoOverlap, 2000);
-            setTimeout(preventLogoOverlap, 4000);
-            
-            // Monitorear scroll para prevenir solapamiento en tiempo real
-            const container = document.querySelector('.ppt-container');
-            if (container) {
-                let scrollTimeout;
-                container.addEventListener('scroll', () => {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        const umfrageSection = document.querySelector('#umfrage');
-                        if (umfrageSection) {
-                            const rect = umfrageSection.getBoundingClientRect();
-                            const logo = document.querySelector('.main-logo-fixed');
-                            const logoRect = logo ? logo.getBoundingClientRect() : null;
-                            
-                            // Si hay solapamiento, forzar scroll hacia abajo
-                            if (logoRect && rect.top < logoRect.bottom + 50) {
-                                const offset = (logoRect.bottom + 50) - rect.top;
-                                container.scrollTop += offset;
-                            }
-                        }
-                    }, 100);
-                });
-            }
-        });
-
     </script>
 </body>
 </html>
+
+
+/* ========================================
+   FIX: umfrage position and background fix
+======================================== */
