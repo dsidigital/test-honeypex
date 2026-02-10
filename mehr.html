@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dfeaff">
+    <title>Honeypex - Interface</title>
+    <!-- Critical paint: evita flash negro antes de cargar imágenes/CSS -->
+    <style>
+        html, body { background-color: #dfeaff; }
+
+        .brand-name {
+            font-weight: bolder;
+        }
+
+        .brand-x {
+          color: #0000FF; /* Puedes ajustar el tono de azul aquí */
+          font-weight: bolder;
+        }  
+    </style>
+    <!-- Preload del background para evitar "flash" y mejorar LCP -->
+    <link rel="preload" as="image" href="img/Honeypex Background.png" fetchpriority="high">
+    <link rel="preload" as="image" href="img/Honeypex-Background-Mobile.png" media="(max-width: 900px)" fetchpriority="high">
+    <style>
+        
+
+        :root {
+            --neon-blue: #1304ea;
+            --neon-purple: #8137ff;
+            --logo-width-desktop: 35vw;
+            --content-gap-bottom: 12vh;            
+        }
+
+        /* ========== RESET UNIVERSAL ========== */
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* ========== BASE STYLES ========== */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #dfeaff;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body {
+            background: transparent;
+        }
+
+        /* ===== BACKGROUND ===== */
+        .tunnel-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("img/Honeypex Background.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== SCROLL CONTAINER ========== */
+        .global-site-container {
+            position: relative;
+            z-index: 2;
+            width: 92%;
+            max-width: 1800px;
+            margin: 0 auto;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 3vh;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            padding: 1.2vh 2.5vw;
+            z-index: 1000;
+            border: 1px solid #333;
+            width: auto;
+            max-width: 1000px;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        
+        .logo-nav {
+            font-weight: bold;
+            color: white;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            display: flex;
+            align-items: center;
+            margin-right: 2.5vw;
+
+        }
+        .logo-nav span { color: var(--neon-purple); margin-left: 2px; }
+
+        .logo-nav-img {
+            width: clamp(7rem, 12vw, 10rem);
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.8rem, 2.5vw, 2rem);
+            /*gap: 2vw;*/
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.65rem, 1.8vw, 0.9rem);
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--neon-blue); }
+
+        .divider {
+            display: block;
+            width: 2px;
+            height: 3vh;
+            background-color: var(--neon-blue);
+        }
+
+       /* ========== NAVBAR - UMFRAGE ========== */
+
+        .navbar-umfrage {
+            position: fixed;
+            left: 50%;
+            bottom: 2vh;
+            background-color: #000;
+            border-radius: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5vh 1.5vw;
+            z-index: 1000;
+            border: 1px solid #333;
+            width: 60vw;
+            max-width: 36vw;
+            min-width: 18rem;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s;
+            transform: translate(-50%, 24px);
+        }
+
+        .navbar-umfrage.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .nav-links-umfrage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            gap: 1.5vw;
+        }
+
+        .nav-links-umfrage a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.65rem, 1.8vw, 0.9rem);
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-links-umfrage a:hover {
+            color: var(--neon-blue);
+        }
+
+        .navbar-umfrage .divider-umfrage {
+            display: block;
+            width: 0.12em;
+            height: 3vh;
+            background-color: var(--neon-blue);
+            opacity: 1;
+            flex-shrink: 0;
+        }
+
+        /* Título principal */
+        .main-title {
+            display: block;
+            position: fixed;
+            top: calc(50% - 18vh);
+            left: 5vw;
+            z-index: 102;
+            opacity: 0;
+            animation: titleAppear 1s ease-out 2.5s forwards;
+        }
+
+
+        .main-title .projekt {
+            font-size: clamp(2.2rem, 2.8vw, 3.5rem);
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 0.05em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .main-title .honeypex {
+            margin-left: 4vw !important;
+            font-size: clamp(2.5rem, 3.2vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(90deg, #00daff 0%, #8137ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.05em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        @keyframes titleAppear {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-columns {
+            display: flex;
+            gap: 3vw;
+            align-items: flex-start;
+            margin-bottom: 1vh;
+        }
+
+        .content-icon {
+            flex-shrink: 0;
+            width: clamp(2.5rem, 8vw, 3.5rem);
+            height: clamp(2.5rem, 8vw, 3.5rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #000;
+        }
+
+        .content-text {
+            flex: 1;
+            font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+            line-height: 1.5;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .content-image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        /* --- NUEVO BLOQUE ÚNICO AL 80% --- */
+        .content-block-pilot {
+            background: rgba(255, 255, 255, 0.30);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            width: 100%;
+            margin: 18vh 0 12vh 0;
+            max-width: 1600px;
+            padding: 70px;            
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #000;
+            box-sizing: border-box; /* Asegura que el padding no sume ancho extra */
+            animation: blockAppear 0.8s ease-out forwards;
+        }
+
+        /* --- GRID HEADER 3 COLUMNAS --- */
+        .pilot-header-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .pilot-header-left {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .pilot-header-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+/*
+        .pilot-header-right {
+            /* Columna derecha vacía por ahora 
+        }*/
+
+        .pilot-logo {
+            width: 210px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* --- FORMATO DE TEXTOS SEGÚN IMÁGENES --- */
+        .pilot-title {
+            font-size: clamp(3.5rem, 3.6vw, 4.5rem);
+            text-transform: uppercase;
+            text-align: center;
+            color: #0000ff;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .pilot-intro {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .pilot-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 50px;
+        }
+
+        .pilot-list li {
+            position: relative;
+            padding-left: 32px; /* ajustado para icono de 18px */
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .pilot-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.22em; /* ajustado para centrar mejor el icono de 18px */
+            width: 18px;
+            height: 18px;
+            background-image: url("img/Sparky blue4.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pilot-list li:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* --- ESTRUCTURA DE TABLA/GRID --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 220px 1fr; /* Columna izquierda fija para etiquetas */
+            gap: 30px;
+            margin-top: 50px;
+            border-top: 1px solid #0000FF;
+            padding-top: 50px;
+        }
+
+        .grid-label {
+            font-weight: 900;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            color: #333;
+        }    
+
+
+        /* ========== FAQ ========== */
+
+        .content-bloq-faq {
+            width: 100%;
+            max-width: 1600px;
+            margin: 8vh auto 12vh auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .block-faq {
+            border-radius: 22px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+            animation: faqAppear 0.8s ease-out forwards;
+        }
+
+        @keyframes faqAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 22px 25px;
+            background: rgba(135, 128, 255, 0.70);
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: left;
+        
+            border: none;
+            border-radius: 22px;
+            cursor: pointer;
+        
+            display: block;
+        
+            transition:
+                background 0.3s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;        
+        }
+
+        .faq-question:active {
+            transform: scale(0.985);
+        }
+
+        .faq-question strong {
+            font-weight: 800;
+        }
+
+        .block-faq:hover .faq-question {
+            background: rgba(135, 128, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .block-faq.active .faq-question {
+            background: rgba(135, 128, 255, 1);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            box-shadow: none;
+            transform: none;            
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+
+            background: rgba(135, 128, 255, 0.18);
+            color: #000000;
+
+            padding: 0 28px;
+
+            transition:
+                max-height 0.45s ease,
+                padding 0.35s ease,
+                opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .block-faq.active .faq-answer {
+            max-height: 500px;
+            padding: 22px 28px 25px 28px;
+            opacity: 1;
+        }
+
+        .block-faq.active:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .block-faq.active:hover .faq-question {
+            background: rgba(135, 128, 255,1);
+        }
+        .block-faq.active:hover .faq-answer {
+            background: rgba(135, 128, 255, 0.32);
+        }
+
+        .faq-answer p {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .faq-answer p strong {
+            font-weight: 800;
+        }
+
+
+        /* ========== PILOT KUNDE ========== */
+
+        .pilot-cta-block {
+            margin-top: 30px;
+            padding-top: 30px;
+            margin-left: 70px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pilot-cta-text {
+            max-width: 500px;
+            font-size: 1.55rem;
+            line-height: 1.7;
+            color: #000;
+        }
+
+        .pilot-cta-text strong {
+            font-weight: 800;
+        }
+
+        .pilot-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+                
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .pilot-cta-button img {
+            width: 220px;
+            height: auto;
+            display: block;
+        
+            transition: transform 0.25s ease, filter 0.25s ease;
+        }
+        
+        .pilot-cta-button:hover img {
+            transform: translateY(-2px) scale(1.02);
+            filter: drop-shadow(0 12px 28px rgba(59, 44, 255, 0.45));
+        }
+        
+        .pilot-cta-button:active img {
+            transform: scale(0.97);
+        }
+
+        /* ========== MOBILE PORTRAIT ========== */
+        @media (max-width: 768px) {
+            
+            /* Soberanía del viewport */
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+            }
+
+            /* Background móvil */
+            .tunnel-bg {
+                background-image: url("img/Honeypex-Background-Mobile.png");
+                background-position: center top;
+            }
+
+            /* Navbar superior */
+            .navbar {
+                width: 92%;
+                max-width: 92%;
+                padding: 1vh 3vw;
+            }
+
+            .logo-nav {
+                margin-right: 1vw;
+            }
+
+            .logo-nav-img {
+                width: clamp(6rem, 16vw, 8rem);
+            }
+
+            .nav-links {
+                gap: clamp(0.6rem, 3vw, 1rem);
+            }
+
+            .nav-links a {
+                font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+            }
+
+            /* Ocultar dividers en móvil para evitar gaps irregulares */
+            .divider {
+                display: none;
+            }
+
+            /* Contenedor principal */
+            .global-site-container {
+                width: 92%;
+                padding: 0;
+            }
+
+            /* Bloque de contenido principal */
+            .content-block-pilot {
+                width: 100%;
+                max-width: 100%;
+                margin: 12vh auto 8vh auto;
+                padding: 2rem 5vw;
+                border-radius: 1.25rem;
+            }
+
+            /* Header grid a una columna */
+            .pilot-header-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .pilot-header-left,
+            .pilot-header-center {
+                justify-content: center;
+            }
+
+            .pilot-logo {
+                width: 140px;
+                margin: 0 auto;
+            }
+
+            /* Títulos centrados */
+            .pilot-title {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+                text-align: center;
+                width: 100%;
+                display: block;
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            /* Intro y listas */
+            .pilot-intro {
+                font-size: 1rem;
+                line-height: 1.5;
+                text-align: left;
+                margin-bottom: 25px;
+            }
+
+            .pilot-list {
+                margin-bottom: 30px;
+            }
+
+            .pilot-list li {
+                font-size: 0.95rem;
+                padding-left: 28px;
+                margin-bottom: 10px;
+            }
+
+            .pilot-list li::before {
+                width: 16px;
+                height: 16px;
+                top: 0.18em;
+            }
+
+            /* Grid container a una columna */
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 30px;
+                padding-top: 30px;
+            }
+
+            .grid-label {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            /* FAQ */
+            .content-bloq-faq {
+                margin: 6vh 0 8vh 0;
+                padding: 0 4vw;
+                gap: 15px;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 18px 20px;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .block-faq.active .faq-answer {
+                padding: 18px 20px 20px 20px;
+            }
+
+            .faq-answer p {
+                font-size: 0.95rem;
+            }
+
+            /* CTA Block */
+            .pilot-cta-block {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-left: 0;
+                padding-top: 20px;
+                text-align: center;
+            }
+
+            .pilot-cta-text {
+                max-width: 100%;
+                font-size: 1.2rem;
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            .pilot-cta-button {
+                justify-self: center;
+            }
+
+            .pilot-cta-button img {
+                width: 180px;
+            }
+
+            /* Footer navbar */
+            .navbar-umfrage {
+                width: 80%;
+                max-width: 80%;
+                min-width: unset;
+                padding: 0.8vh 2.5vw;
+                transform: translate(-50%, 24px);
+            }
+
+            .navbar-umfrage.visible {
+                transform: translate(-50%, 0);
+            }
+
+            .nav-links-umfrage {
+                width: 100%;
+                gap: 2vw;
+            }
+
+            .nav-links-umfrage a {
+                font-size: clamp(0.65rem, 2.3vw, 0.8rem);
+            }
+
+            .divider {
+                height: 2.5vh;
+            }
+            
+            .divider-umfrage {
+                height: 2.2vh;
+            }
+        }
+
+        /* ========== MOBILE LANDSCAPE ========== */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .global-site-container {
+                width: 92%;
+            }
+
+            .content-block-pilot {
+                padding: 2rem 4vw;
+                border-radius: 1.5rem;
+            }
+
+            .pilot-title {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+            }
+        }
+
+        /* Navbar superior: centrado consistente en movil/tablet */
+        @media (max-width: 1023px) {
+            .navbar {
+                justify-content: center;
+                gap: clamp(0.5rem, 2vw, 1.2rem);
+            }
+
+            .logo-nav {
+                margin-right: 0;
+                flex-shrink: 0;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: clamp(0.55rem, 2.4vw, 1rem);
+            }
+
+            .nav-links .divider {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 2.4vh;
+                background-color: #0044ff;
+                flex-shrink: 0;
+            }
+
+            .navbar-umfrage {
+                width: 82%;
+                max-width: 28rem;
+                min-width: unset;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="tunnel-bg"></div>
+
+    <header class="navbar">
+        <div class="logo-nav">
+            <a href="https://dsidigital.github.io/honeypex.main/">
+                <img src="img/Honeypex Logo Wisepex.png" alt="Logo Honeypex Wisepex" class="logo-nav-img">
+            </a>        
+        </div>
+        <div class="nav-links">
+            <div class="divider"></div>
+            <a href="https://dsidigital.github.io/honeypex.main/#features">FEATURES</a>            
+            <div class="divider"></div>
+            <a href="https://dsidigital.github.io/honeypex.main/#umfrage">UMFRAGE</a>           
+            <div class="divider"></div>
+            <a href="https://dsidigital.github.io/honeypex.mehr/">MEHR</a>    
+        </div>
+    </header>
+
+    <div class="global-site-container">
+        <div class="content-block-pilot" id="#mehr">
+            
+            <div class="pilot-header-grid">
+                <div class="pilot-header-left">
+                    <img src="img/Projektlogo-single.png" alt="Projekt Logo" class="pilot-logo">
+                </div>
+                <div class="pilot-header-center">
+                    <h2 class="pilot-title">GEMEINSAM<br> IN DIE ZUKUNFT</h2>
+                </div>
+                <div class="pilot-header-right">
+                    <!-- Columna derecha vacía -->
+                </div>
+            </div>
+            
+            <p class="pilot-intro">
+                <span class="brand-name">honeype<span class="brand-x">x</span></span> entsteht mit denen, die es nutzen! Als Pilotkunde begleitest du <span class="brand-name">honeype<span class="brand-x">x</span></span> bereits vor dem offiziellen Marktstart und gestaltest aktiv die Weiterentwicklung mit. Durch die Nutzung in einem realen Umfeld erhalten wir gemeinsam wertvolle Erkenntnisse, können Funktionen frühzeitig optimieren und stellen sicher, dass <span class="brand-name">honeype<span class="brand-x">x</span></span> exakt auf die Anforderungen der Praxis ausgerichtet ist.
+            </p>
+            
+            
+            <div class="grid-container">
+                
+                <p style="font-size: 1.2rem"><strong>Deine Vorteile für eine aktive Mitarbeit:</strong></p>
+                <ul class="pilot-list">
+                    <li>Früher Zugang zu <span class="brand-name">honeype<span class="brand-x">x</span></span> Version 0.9</li>
+                    <li>Einfluss auf Funktionen und Prioritäten in der Entwicklung</li>
+                    <li>Direkter Austausch mit unserem Produktteam</li>
+                    <li>Wettbewerbsvorteil durch innovative digitale Prozesse</li>
+                    <li>Exklusive Konditionen für unsere Pilotkunden</li>
+                </ul>
+            </div>
+    
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="grid-label">DEIN BEITRAG</div>
+                <div>
+                    <ul class="pilot-list">
+                        <li>Produktiver Einsatz von <span class="brand-name">honeype<span class="brand-x">x</span></span> im Betriebsalltag</li>
+                        <li>Konstruktives und regelmäßiges Anwender-Feedback</li>
+                        <li>Einbringung von praktischen, realen Abläufen</li>
+                    </ul>
+                </div>
+    
+                <div class="grid-label">DEINE LEISTUNG</div>
+                <div>
+                    <ul class="pilot-list">
+                        <li>Benennung eines kleinen Kernteams (Ansprechpartner + 1 bis 3 Anwender)</li>
+                        <li>Teilnahme an regelmäßigen Review-Sessions (alle 2 bis 4 Wochen)</li>
+                        <li>Aktive Weitergabe von Problemen, Ideen und Optimierungsvorschlägen</li>
+                    </ul>
+                </div>
+    
+                <div class="grid-label">DEIN MEHRWERT</div>
+                <div>
+                    <ul class="pilot-list">
+                        <li>Früher Zugang zu honeypex und direkter Einfluss auf die Entwicklung</li>
+                        <li>Optimierte Passform der Lösung durch das Anwender-Feedbacks</li>
+                        <li>Exklusive Kostenvorteile:
+                            <ul class="pilot-list" style="margin-top: 10px; margin-left: 20px;">
+                                <li>Kostenfreie Nutzung in der Pilotphase</li>
+                                <li>50% Rabatt auf den gültigen Lizenzpreis für die ersten 12 Monate</li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="content-bloq-faq">
+
+                <h2 class="pilot-title" style="margin-bottom:5vh;">FAQ</h2>
+
+                <div class="block-faq block-faq-1">
+            
+                    <button class="faq-question">
+                        Was ist <strong>honeypex</strong> eigentlich – Fuhrparksoftware oder Inventarverwaltung?
+                    </button>
+            
+                    <div class="faq-answer">
+                        <p><strong>honeypex</strong> ist beides – und bewusst nicht getrennt.</p>
+            
+                        <p>Die Plattform verwaltet alle Arten von Assets: Fahrzeuge, Maschinen,
+                            Werkzeuge und Betriebsmittel.</p>
+            
+                        <p>Der Fuhrpark ist dabei ein wichtiger Anwendungsfall, aber kein Sondermodul.
+                            Prüfungen, Ausleihe und Schäden folgen überall demselben Prinzip.</p>
+                    </div>
+                </div>
+
+                <div class="block-faq block-faq-2">
+            
+                    <button class="faq-question">
+                        Ist <strong>honeypex</strong> eher für operative Nutzer oder für Mitarbeitende der Verwaltung gedacht?
+                    </button>
+            
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;">Für beide.</p>
+                        <p style="margin-top: 1px;"><strong>honeypex</strong> richtet sich an:</p>
+            
+                        <ul class="pilot-list" style="margin-left: 30px; margin-bottom: 6px;">
+                            <li><p style="margin-bottom: 1px;">operative Mitarbeitende </p>
+                                <p style="margin-top: 1px;">(z. B. Schäden melden, Prüfungen durchführen, Fahrzeuge oder Maschinen reservieren)
+                                </p>
+                            </li>
+                            <li><p style="margin-bottom: 1px;">Verantwortliche in Verwaltung oder Fuhrpark </p>
+                                <p style="margin-top: 1px;">(Überblick, Fristen, Nachweise und übersichtliche Dashboards)</p>                        
+                            </li>
+                        </ul>
+                        <p style="margin-top: 1px;">Die Oberfläche ist so gestaltet, dass beide Rollen sinnvoll und ohne Umwege damit arbeiten können.</p>
+                    </div>            
+                </div>
+                
+                <div class="block-faq block-faq-3">
+                    
+                    <button class="faq-question">
+                        Ist <strong>honeypex</strong> eher für große Unternehmen gedacht?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;">Nein.</p>
+                        <p style="margin-top: 1px;margin-bottom: 1px;"><strong>honeypex</strong> richtet sich bewusst auch an kleine und mittlere Unternehmen, die eine einfache, bezahlbare und nachvollziehbare Lösung suchen – ohne ERP-Einführung oder Projekt-Marathon.</p>
+                        <p style="margin-top: 1px;margin-bottom: 1px;">Optional sind Integrationen möglich, sie sind jedoch keine Voraussetzung für den Betrieb von <strong>honeypex</strong>.</p>
+                    </div>
+                </div>
+                
+                <div class="block-faq block-faq-4">
+                    
+                    <button class="faq-question">
+                        Ab wann kann ich <strong>honeypex</strong> nutzen?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;"><strong>honeypex</strong> befindet sich aktuell in der aktiven Entwicklung.</p>
+                        <p style="margin-top: 1px;">Bereits vor dem offiziellen Go-live können ausgewählte Unternehmen <strong>honeypex</strong> als Pilotkunden im realen Betrieb einsetzen.</p>                        
+                        <p>Der Funktionsumfang der ersten Version (v1) wird bis Oktober fertiggestellt. Der reguläre Go-live erfolgt im Anschluss.</p>    
+                        <p>Pilotkunden erhalten frühzeitig Zugriff und können Feedback direkt in die Weiterentwicklung einbringen.</p>    
+                    </div>
+                </div>
+                
+                <div class="block-faq block-faq-5">
+                    
+                    <button class="faq-question">
+                        Deckt <strong>honeypex</strong> damit schon alle Funktionen ab?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;">Nein – und das ist bewusst so.</p>
+                        <p style="margin-top: 1px;"><strong>honeypex</strong> ist als Plattform gedacht, die Schritt für Schritt erweitert wird.</p>                        
+                        <p style="margin-bottom: 1px;">Die erste Version fokussiert sich auf Inventar, Prüfungen und Fuhrpark, um hier einen klaren Mehrwert zu liefern.</p>
+                        <p style="margin-top: 1px;">Für spätere Versionen denken wir bereits weiter, z. B. in Richtung zusätzlicher Funktionen wie Urlaubs-, Krankheits- oder Zeiterfassung. Der Ausbau erfolgt bedarfsorientiert und praxisnah.</p>    
+                    </div>
+                </div>
+                
+                <div class="block-faq block-faq-6">
+                    
+                    <button class="faq-question">
+                        Wie funktioniert der Einstieg in <strong>honeypex</strong>?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;"><strong>honeypex</strong> ist kein IT-Großprojekt.</p>
+                        <p style="margin-top: 1px;">Es gibt keine langen Einführungsphasen oder aufwendige Individualentwicklungen.</p>
+                        <p style="margin-bottom: 1px;">Ihr startet mit:</p>
+                        
+                        <ul class="pilot-list" style="margin-left: 30px; margin-bottom: 6px;">
+                            <li style="margin-bottom: 1px; margin-top: 1px;">vordefinierten Prüf- und Prozessvorlagen</li>
+                            <li style="margin-bottom: 1px; margin-top: 1px;">der Erfassung eurer Fahrzeuge, Maschinen oder Arbeitsmittel</li>
+                            <li style="margin-top: 1px;">klaren Fristen, Zuständigkeiten und Nachweisen</li>
+                        </ul>
+                        <p>Danach könnt ihr direkt loslegen.</p>
+                    </div>            
+                </div>
+                
+                <div class="block-faq block-faq-7">
+                    
+                    <button class="faq-question">
+                        Was, wenn unsere Prozesse von euren Vorlagen abweichen?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p>Das ist kein Problem. <strong>honeypex</strong> liefert eine sofort nutzbare Basis, lässt sich aber flexibel anpassen.
+                        </p>
+                        <p>Wenn eure Prüfintervalle, Zuständigkeiten oder Abläufe von der Standardlogik abweichen, können diese einfach konfiguriert werden – ohne Programmierung, ohne Spezialprojekte.
+                        </p>                        
+                        <p>So bleibt <strong>honeypex</strong> pragmatisch, aber trotzdem passgenau.</p>
+                    </div>
+                </div>
+                
+                <div class="block-faq block-faq-8">
+                    
+                    <button class="faq-question">
+                        Wie komme ich schnell an Informationen zu einem Fahrzeug oder Arbeitsmittel?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p>Einfach scannen – und ihr seht sofort:
+                        </p>
+                        
+                        <ul class="pilot-list" style="margin-left: 30px; margin-bottom: 6px;">
+                            <li style="margin-bottom: 1px;">aktuellen Status</li>
+                            <li style="margin-bottom: 1px; margin-top: 1px;">letzte und nächste Prüfung</li>
+                            <li style="margin-bottom: 1px; margin-top: 1px;">relevante Dokumente und Nachweise</li>
+                            <li style="margin-top: 1px;">gemeldete Schäden oder Sperren</li>
+                        </ul>
+                        <p>Ohne langes Suchen, ohne Listen, direkt vor Ort.</p>
+                    </div>            
+                </div>
+                
+                <div class="block-faq block-faq-9">
+                    
+                    <button class="faq-question">
+                        Wo liegen unsere Daten und Dokumente?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;">Alle Daten und Dokumente werden zentral in <strong>honeypex</strong> gespeichert.
+                        </p>
+                        <p style="margin-top: 1px;">Es gibt keine externen Ablagen oder verteilten Dateien – alles ist an einem Ort verfügbar.
+                        </p>                        
+                        <p>Die Speicherung erfolgt ausschließlich in Deutschland und unterliegt den geltenden Datenschutzanforderungen. 
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="block-faq block-faq-10">
+                    
+                    <button class="faq-question">
+                        Ist <strong>honeypex</strong> ein eigenständiges System?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;">Ja</p>
+                        <p style="margin-top: 1px;"><strong>honeypex</strong> ist stand-alone und benötigt kein ERP oder Drittsystem im Hintergrund.
+                        </p>                        
+                        <p>Optional sind Integrationen möglich, sie sind jedoch keine Voraussetzung für den Betrieb von <strong>honeypex</strong>.</p>
+                    </div>
+                </div>
+                
+                <div class="block-faq block-faq-11">
+                    
+                    <button class="faq-question">
+                        Was kostet <strong>honeypex</strong>?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p><strong>honeypex</strong>wird bedarfsgerecht bepreist.</p>
+                        <p style="margin-bottom: 1px;">Die Abrechnung orientiert sich an:</p>
+                        
+                        <ul class="pilot-list" style="margin-left: 30px; margin-bottom: 6px;">
+                            <li style="margin-bottom: 1px; margin-top: 1px;">
+                                der Anzahl der verwalteten Assets (z. B. Fahrzeuge, Maschinen, Arbeitsmittel)
+                            </li>
+                            <li style="margin-top: 1px;">
+                                den genutzten Modulen
+                            </li>
+                        </ul>
+                        
+                        <p>Neue Funktionen oder Module können später optional hinzugebucht werden. Kunden entscheiden selbst, ob sie diese nutzen möchten – und zahlen nur für das, was sie tatsächlich einsetzen.
+                        </p>
+                        <p style="margin-bottom: 1px;">Für Pilotkunden gilt:</p>
+                        
+                        <ul class="pilot-list" style="margin-left: 30px; margin-bottom: 6px;">
+                            <li style="margin-bottom: 1px; margin-top: 1px;">
+                                kostenlose Nutzung während der Pilotphase
+                            </li>
+                            <li style="margin-top: 1px;">
+                                nach dem offiziellen Start 50 % Rabatt für die ersten 12 Monate
+                            </li>
+                        </ul>
+                        <p>Unser Ziel: Transparente Preise und Funktionen, keine versteckten Zusatzkosten.</p>
+                    </div>            
+                </div>
+
+                <div class="block-faq block-faq-12">
+                    
+                    <button class="faq-question">
+                        Noch unsicher, ob <strong>honeypex</strong> zu euch passt?
+                    </button>
+                    
+                    <div class="faq-answer">
+                        <p style="margin-bottom: 1px;">Gebt uns kurz Feedback oder meldet euch als Pilotkunde.  
+                        </p>
+                        <p style="margin-top: 1px;">Wir freuen uns über jede Rückmeldung aus der Praxis.
+                        </p>                        
+                    </div>
+                </div>
+            
+            </div>
+        
+            <div class="pilot-cta-block">
+
+                <p class="pilot-cta-text">
+                    Wenn du Interesse hast, als Pilotkunde die Entwicklung von
+                    <span class="brand-name">honeype<span class="brand-x">x</span></span> voranzutreiben, melde dich gern
+                    unverbindlich an. Wir werden uns zeitnah mit dir in Verbindung
+                    setzen.
+                </p>
+            
+                <a href="https://forms.office.com/e/uSaCUGhR88" target="_blank" class="pilot-cta-button">
+                    <img src="img/Button Pilotkunde4.png" alt="Pilotkunde werden">
+                </a>
+            
+            </div>
+            
+        
+        </div>
+    </div>
+    <footer class="navbar-umfrage">
+        <div class="nav-links-umfrage">
+            <a href="https://dsidigital.github.io/honeypex.kontakt/">KONTAKT</a>           
+            <div class="divider-umfrage"></div>
+            <a href="https://dsidigital.github.io/honeypex.kontakt/#datenschutz">DATENSCHUTZ</a>           
+            <div class="divider-umfrage"></div>
+            <a href="https://dsidigital.github.io/honeypex.kontakt/#impressum">IMPRESSUM</a>
+            </footer>
+    <script>
+
+        // Scroll al top al cargar
+        window.onbeforeunload = function () { window.scrollTo(0, 0); };
+        window.onload = function () {
+            const container = document.querySelector('.global-site-container');
+            if (container) container.scrollTop = 0;
+            window.scrollTo(0, 0);
+        };
+        if (history.scrollRestoration) history.scrollRestoration = 'manual';
+
+        // Navegación
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
+
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
+                const container = document.querySelector('.global-site-container');
+                if (targetSection && container) {
+                    container.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        /*JS navbar-umfrage */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentFaq = document.querySelector('.content-bloq-faq');
+            const navUmfrage = document.querySelector('.navbar-umfrage');
+
+            if (!contentFaq || !navUmfrage) return;
+
+            // Mostrar navbar-umfrage SOLO cuando estamos cerca del fondo de la página
+            function checkScroll() {
+                const scrollPosition = window.scrollY + window.innerHeight;
+                const pageHeight = document.documentElement.scrollHeight;
+
+                // Cuando el usuario esté a menos de 120px del fondo
+                if (pageHeight - scrollPosition < 120) {
+                    navUmfrage.classList.add('visible');
+                } else {
+                    navUmfrage.classList.remove('visible');
+                }
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            // Ejecutar una vez al inicio por si ya estamos abajo
+            checkScroll();
+        });
+            
+
+        /*JS faq-question */
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+            
+                const clickedBlock = button.closest('.block-faq');
+                const allBlocks = document.querySelectorAll('.block-faq');
+                
+                allBlocks.forEach(block => {
+                    if (block !== clickedBlock) {
+                        block.classList.remove('active');
+                    }
+                });
+            
+                clickedBlock.classList.toggle('active');
+            });
+        });
+
+        window.addEventListener("load", function () {
+            if (window.location.hash) {
+              const target = document.querySelector(window.location.hash);
+              if (target) {
+                setTimeout(() => {
+                  target.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+              }
+            }
+          });
+
+    </script>
+</body>
+</html>
