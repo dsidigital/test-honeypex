@@ -522,11 +522,12 @@
 
             /* Ajuste general del bloque umfrage */
             #umfrage {
-               scroll-margin-top: 45vh;
+               scroll-margin-top: 52vh;
+               scroll-snap-align: none; /* Desactivar snap para evitar solapamiento */
            }
 
             #umfrage .content-block {
-                margin-top: 55vh;
+                margin-top: 62vh;
                 margin-bottom: 18vh;
                 padding-top: 2.5vh;
                 padding-bottom: 3.5vh;
@@ -656,8 +657,13 @@
 
             /* Ajuste para bloque umfrage en tablets */
             #umfrage {
-               scroll-margin-top: 42vh;
+               scroll-margin-top: 48vh;
+               scroll-snap-align: none; /* Desactivar snap para evitar solapamiento */
            }
+           
+            #umfrage .content-block {
+                margin-top: 55vh;
+            }
 
             /* Botón encuesta: más abajo verticalmente en tablets */
             #umfrage .survey-button {
@@ -1039,7 +1045,12 @@
 
             /* Ajuste para umfrage en landscape */
             #umfrage {
-                scroll-margin-top: 38vh;
+                scroll-margin-top: 42vh;
+                scroll-snap-align: none; /* Desactivar snap para evitar solapamiento */
+            }
+            
+            #umfrage .content-block {
+                margin-top: 50vh;
             }
 
             /* Botón encuesta: centrado verticalmente en landscape */
@@ -1088,22 +1099,50 @@
         /* Pantallas muy alargadas (aspect ratio alto) */
         @media (max-width: 767px) and (min-aspect-ratio: 9/19) {
             #umfrage .content-block {
-                margin-top: 60vh;
+                margin-top: 68vh;
             }
             
             #umfrage {
-                scroll-margin-top: 50vh;
+                scroll-margin-top: 58vh;
+                scroll-snap-align: none;
             }
         }
 
         /* Tablets con pantallas alargadas */
         @media (min-width: 768px) and (max-width: 1023px) and (min-aspect-ratio: 9/16) {
             #umfrage .content-block {
-                margin-top: 52vh;
+                margin-top: 58vh;
             }
             
             #umfrage {
-                scroll-margin-top: 45vh;
+                scroll-margin-top: 50vh;
+                scroll-snap-align: none;
+            }
+        }
+
+        /* Forzar desactivación de snap en todos los móviles/tablets */
+        @media (max-width: 1023px) {
+            #umfrage {
+                scroll-snap-align: none !important;
+                scroll-snap-stop: normal !important;
+            }
+        }
+
+        /* Ajustes para dispositivos con altura específica (pantallas comunes) */
+        @media (max-width: 767px) and (min-height: 700px) and (max-height: 900px) {
+            #umfrage .content-block {
+                margin-top: 65vh !important;
+            }
+        }
+
+        /* Para tablets horizontales o dispositivos anchos pero cortos */
+        @media (min-width: 768px) and (max-width: 1023px) and (max-height: 600px) {
+            #umfrage .content-block {
+                margin-top: 60vh !important;
+            }
+            
+            #umfrage {
+                scroll-margin-top: 52vh !important;
             }
         }
 
@@ -1409,34 +1448,81 @@
                 const logoRect = logo.getBoundingClientRect();
                 const logoBottom = logoRect.bottom;
                 const viewportHeight = window.innerHeight;
+                const viewportWidth = window.innerWidth;
                 
-                // Calcular el espacio mínimo seguro (20vh adicional como margen)
-                const minSafeGap = viewportHeight * 0.20;
+                // Espacio mínimo seguro más grande en móviles/tablets
+                let minSafeGapVh = 0.25; // 25vh por defecto
+                
+                if (viewportWidth <= 767) {
+                    // Móviles: 28vh de margen
+                    minSafeGapVh = 0.28;
+                } else if (viewportWidth <= 1023) {
+                    // Tablets: 26vh de margen
+                    minSafeGapVh = 0.26;
+                }
+                
+                const minSafeGap = viewportHeight * minSafeGapVh;
                 const safeTopPosition = logoBottom + minSafeGap;
                 
                 // Calcular el margen superior necesario en vh
                 const requiredMarginVh = (safeTopPosition / viewportHeight) * 100;
                 
-                // Aplicar el margen solo si es mayor que el actual
-                const currentMargin = parseFloat(window.getComputedStyle(umfrageBlock).marginTop);
-                const currentMarginVh = (currentMargin / viewportHeight) * 100;
-                
-                if (requiredMarginVh > currentMarginVh) {
-                    umfrageBlock.style.marginTop = `${Math.max(requiredMarginVh, 55)}vh`;
+                // Margen mínimo basado en dispositivo
+                let minimumMarginVh = 62;
+                if (viewportWidth <= 767) {
+                    minimumMarginVh = 65;
+                } else if (viewportWidth <= 1023) {
+                    minimumMarginVh = 58;
                 }
                 
-                // Ajustar scroll-margin-top del section
-                const scrollMarginVh = Math.max(requiredMarginVh - 10, 45);
+                // Siempre aplicar el margen calculado (más agresivo)
+                const finalMarginVh = Math.max(requiredMarginVh, minimumMarginVh);
+                umfrageBlock.style.marginTop = `${finalMarginVh}vh`;
+                
+                // Ajustar scroll-margin-top del section (más conservador)
+                const scrollMarginVh = Math.max(finalMarginVh - 8, minimumMarginVh - 8);
                 umfrageSection.style.scrollMarginTop = `${scrollMarginVh}vh`;
+                
+                // Forzar scroll-snap-align none en móviles/tablets
+                if (viewportWidth <= 1023) {
+                    umfrageSection.style.scrollSnapAlign = 'none';
+                }
             }
 
             // Ejecutar al cargar y al cambiar el tamaño de pantalla
             preventLogoOverlap();
             window.addEventListener('resize', preventLogoOverlap);
+            window.addEventListener('orientationchange', () => {
+                setTimeout(preventLogoOverlap, 100);
+            });
             
             // Re-ejecutar después de las animaciones del logo
+            setTimeout(preventLogoOverlap, 1000);
             setTimeout(preventLogoOverlap, 2000);
             setTimeout(preventLogoOverlap, 4000);
+            
+            // Monitorear scroll para prevenir solapamiento en tiempo real
+            const container = document.querySelector('.ppt-container');
+            if (container) {
+                let scrollTimeout;
+                container.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const umfrageSection = document.querySelector('#umfrage');
+                        if (umfrageSection) {
+                            const rect = umfrageSection.getBoundingClientRect();
+                            const logo = document.querySelector('.main-logo-fixed');
+                            const logoRect = logo ? logo.getBoundingClientRect() : null;
+                            
+                            // Si hay solapamiento, forzar scroll hacia abajo
+                            if (logoRect && rect.top < logoRect.bottom + 50) {
+                                const offset = (logoRect.bottom + 50) - rect.top;
+                                container.scrollTop += offset;
+                            }
+                        }
+                    }, 100);
+                });
+            }
         });
 
     </script>
