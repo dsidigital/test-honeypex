@@ -521,9 +521,8 @@
             }
 
             /* Ajuste general del bloque umfrage */
-
             #umfrage {
-               scroll-margin-top: 80vh;
+               scroll-margin-top: 40vh;
            }
 
             #umfrage .content-block {
@@ -655,12 +654,12 @@
                 padding: 2.5vh 4vw;
             }
 
-            /* Botón encuesta: más abajo verticalmente en tablets */
-
+            /* Ajuste para bloque umfrage en tablets */
             #umfrage {
-               scroll-margin-top: 80vh;
+               scroll-margin-top: 35vh;
            }
 
+            /* Botón encuesta: más abajo verticalmente en tablets */
             #umfrage .survey-button {
                 float: right;
                 width: clamp(82px, 14vw, 105px);
@@ -680,11 +679,6 @@
            MENOS DE 1023px
         ======================================== */
         @media (max-width: 1023px) {
-
-            #umfrage {
-               scroll-margin-top: 55vh;
-           }
-
             #umfrage .content-text {
                 font-size: clamp(0.9rem, 2.6vw, 1.05rem);
                 line-height: 1.5;
@@ -810,7 +804,11 @@
                 margin-bottom: 4vh;
             }
 
-            /* Restaurar margen normal para umfrage en desktop */
+            /* Ajuste para umfrage en desktop */
+            #umfrage {
+                scroll-margin-top: 15vh;
+            }
+            
             #umfrage .content-block {
                 margin-bottom: 4vh;
             }
@@ -1037,6 +1035,11 @@
 
             section {
                 min-height: 120vh;
+            }
+
+            /* Ajuste para umfrage en landscape */
+            #umfrage {
+                scroll-margin-top: 32vh;
             }
 
             /* Botón encuesta: centrado verticalmente en landscape */
