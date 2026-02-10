@@ -522,10 +522,10 @@
 
             /* Ajuste general del bloque umfrage */
             #umfrage .content-block {
-                margin-top: 52vh;
-                margin-bottom: 22vh;
-                padding-top: 4vh;
-                padding-bottom: 6vh;
+                margin-top: 50vh;
+                margin-bottom: 18vh;
+                padding-top: 2.5vh;
+                padding-bottom: 3.5vh;
                 position: relative;
             }
 
@@ -545,8 +545,8 @@
             /* Botón encuesta: más abajo verticalmente en móviles */
             #umfrage .survey-button {
                 float: right;
-                width: clamp(88px, 24vw, 112px);
-                margin: 3rem 0 0.65rem 0.9rem;
+                width: clamp(72px, 20vw, 96px);
+                margin: 2.2rem 0 0.5rem 0.8rem;                
                 shape-outside: inset(0 round 8px);
                 shape-margin: 12px;
             }
@@ -653,8 +653,8 @@
             /* Botón encuesta: más abajo verticalmente en tablets */
             #umfrage .survey-button {
                 float: right;
-                width: clamp(95px, 18vw, 120px);
-                margin: 2.8rem 0 0.7rem 1rem;
+                width: clamp(82px, 14vw, 105px);
+                margin: 2.2rem 0 0.6rem 0.9rem;                
                 shape-outside: inset(0 round 10px);
                 shape-margin: 13px;
             }
@@ -666,6 +666,22 @@
             }
         }
 
+       /* ========================================
+           MENOS DE 1023px
+        ======================================== */
+        @media (max-width: 1023px) {
+
+            #umfrage {
+               scroll-margin-top: 55vh;
+           }
+           
+            #umfrage .content-text {
+                font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+                line-height: 1.5;
+            }
+        }
+
+       
         /* ========================================
            DESKTOP/LAPTOP (1024px - 1919px)
            GRID LAYOUT 2 COLUMNAS
