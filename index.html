@@ -522,11 +522,11 @@
 
             /* Ajuste general del bloque umfrage */
             #umfrage {
-               scroll-margin-top: 40vh;
+               scroll-margin-top: 45vh;
            }
 
             #umfrage .content-block {
-                margin-top: 50vh;
+                margin-top: 55vh;
                 margin-bottom: 18vh;
                 padding-top: 2.5vh;
                 padding-bottom: 3.5vh;
@@ -656,7 +656,7 @@
 
             /* Ajuste para bloque umfrage en tablets */
             #umfrage {
-               scroll-margin-top: 35vh;
+               scroll-margin-top: 42vh;
            }
 
             /* Botón encuesta: más abajo verticalmente en tablets */
@@ -1039,7 +1039,7 @@
 
             /* Ajuste para umfrage en landscape */
             #umfrage {
-                scroll-margin-top: 32vh;
+                scroll-margin-top: 38vh;
             }
 
             /* Botón encuesta: centrado verticalmente en landscape */
@@ -1082,6 +1082,28 @@
                 width: 82%;
                 max-width: 28rem;
                 min-width: unset;
+            }
+        }
+
+        /* Pantallas muy alargadas (aspect ratio alto) */
+        @media (max-width: 767px) and (min-aspect-ratio: 9/19) {
+            #umfrage .content-block {
+                margin-top: 60vh;
+            }
+            
+            #umfrage {
+                scroll-margin-top: 50vh;
+            }
+        }
+
+        /* Tablets con pantallas alargadas */
+        @media (min-width: 768px) and (max-width: 1023px) and (min-aspect-ratio: 9/16) {
+            #umfrage .content-block {
+                margin-top: 52vh;
+            }
+            
+            #umfrage {
+                scroll-margin-top: 45vh;
             }
         }
 
@@ -1373,6 +1395,49 @@
               }
             }
           });
+
+        /* PREVENCIÓN DE SOLAPAMIENTO LOGO-UMFRAGE */
+        document.addEventListener('DOMContentLoaded', () => {
+            function preventLogoOverlap() {
+                const logo = document.querySelector('.main-logo-fixed');
+                const umfrageSection = document.querySelector('#umfrage');
+                const umfrageBlock = document.querySelector('#umfrage .content-block');
+                
+                if (!logo || !umfrageSection || !umfrageBlock) return;
+
+                // Calcular la posición segura basada en el logo
+                const logoRect = logo.getBoundingClientRect();
+                const logoBottom = logoRect.bottom;
+                const viewportHeight = window.innerHeight;
+                
+                // Calcular el espacio mínimo seguro (20vh adicional como margen)
+                const minSafeGap = viewportHeight * 0.20;
+                const safeTopPosition = logoBottom + minSafeGap;
+                
+                // Calcular el margen superior necesario en vh
+                const requiredMarginVh = (safeTopPosition / viewportHeight) * 100;
+                
+                // Aplicar el margen solo si es mayor que el actual
+                const currentMargin = parseFloat(window.getComputedStyle(umfrageBlock).marginTop);
+                const currentMarginVh = (currentMargin / viewportHeight) * 100;
+                
+                if (requiredMarginVh > currentMarginVh) {
+                    umfrageBlock.style.marginTop = `${Math.max(requiredMarginVh, 55)}vh`;
+                }
+                
+                // Ajustar scroll-margin-top del section
+                const scrollMarginVh = Math.max(requiredMarginVh - 10, 45);
+                umfrageSection.style.scrollMarginTop = `${scrollMarginVh}vh`;
+            }
+
+            // Ejecutar al cargar y al cambiar el tamaño de pantalla
+            preventLogoOverlap();
+            window.addEventListener('resize', preventLogoOverlap);
+            
+            // Re-ejecutar después de las animaciones del logo
+            setTimeout(preventLogoOverlap, 2000);
+            setTimeout(preventLogoOverlap, 4000);
+        });
 
     </script>
 </body>
