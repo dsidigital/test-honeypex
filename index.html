@@ -438,7 +438,7 @@
         #umfrage .survey-button {
             float: right;
             width: clamp(90px, 20vw, 130px);
-            margin: 0.3rem 0 0.7rem 1rem;
+            margin: 2.5rem 0 0.7rem 1rem;
             shape-outside: inset(0 round 10px);
             shape-margin: 14px;
             transition: transform 0.3s ease;
@@ -542,11 +542,11 @@
                 overflow: hidden;
             }
 
-            /* Botón encuesta: derecha con separación del texto */
+            /* Botón encuesta: más abajo verticalmente en móviles */
             #umfrage .survey-button {
                 float: right;
                 width: clamp(88px, 24vw, 112px);
-                margin: 0.25rem 0 0.65rem 0.9rem;
+                margin: 3rem 0 0.65rem 0.9rem;
                 shape-outside: inset(0 round 8px);
                 shape-margin: 12px;
             }
@@ -648,6 +648,21 @@
                 max-width: 70vw;
                 margin: 48vh auto 10vh auto;
                 padding: 2.5vh 4vw;
+            }
+
+            /* Botón encuesta: más abajo verticalmente en tablets */
+            #umfrage .survey-button {
+                float: right;
+                width: clamp(95px, 18vw, 120px);
+                margin: 2.8rem 0 0.7rem 1rem;
+                shape-outside: inset(0 round 10px);
+                shape-margin: 13px;
+            }
+
+            #umfrage .survey-button img {
+                width: 100%;
+                height: auto;
+                display: block;
             }
         }
 
@@ -996,6 +1011,15 @@
 
             section {
                 min-height: 120vh;
+            }
+
+            /* Botón encuesta: centrado verticalmente en landscape */
+            #umfrage .survey-button {
+                float: right;
+                width: clamp(90px, 16vw, 115px);
+                margin: 2rem 0 0.7rem 1rem;
+                shape-outside: inset(0 round 10px);
+                shape-margin: 13px;
             }
         }
 
