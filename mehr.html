@@ -41,12 +41,42 @@
         html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
             font-family: Arial, sans-serif;
-            background-color: #dfeaff;
+            overflow: hidden;
             overflow-x: hidden;
             width: 100%;
             position: relative;
-            min-height: 100vh;
+            background-color: #dfeaff;
+        }
+
+        /* ========== SCROLL WRAPPER (maneja el scroll de toda la página) ========== */
+        .scroll-wrapper {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            position: relative;
+            scrollbar-width: auto;
+            scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+        }
+
+        /* Barra de scroll personalizada para Chrome/Safari/Edge */
+        .scroll-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scroll-wrapper::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .scroll-wrapper::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+        
+        .scroll-wrapper::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         body {
@@ -66,7 +96,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
         }
 
         /* ========== SCROLL CONTAINER ========== */
@@ -76,8 +106,7 @@
             width: 92%;
             max-width: 1800px;
             margin: 0 auto;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: visible;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -289,7 +318,7 @@
             backdrop-filter: blur(3px);
             -webkit-backdrop-filter: blur(3px);
             width: 100%;
-            margin: 18vh 0 12vh 0;
+            margin: 18vh auto 12vh auto;
             max-width: 1600px;
             padding: 70px;            
             border-radius: 30px;
@@ -818,6 +847,7 @@
 </head>
 <body>
 
+    <div class="scroll-wrapper">
     <div class="tunnel-bg"></div>
 
     <header class="navbar">
@@ -1146,13 +1176,14 @@
             <div class="divider-umfrage"></div>
             <a href="kontakt.html#impressum">IMPRESSUM</a>
             </footer>
+    </div><!-- .scroll-wrapper -->
     <script>
 
         // Scroll al top al cargar
         window.onbeforeunload = function () { window.scrollTo(0, 0); };
         window.onload = function () {
-            const container = document.querySelector('.global-site-container');
-            if (container) container.scrollTop = 0;
+            const wrapper = document.querySelector('.scroll-wrapper');
+            if (wrapper) wrapper.scrollTop = 0;
             window.scrollTo(0, 0);
         };
         if (history.scrollRestoration) history.scrollRestoration = 'manual';
@@ -1166,9 +1197,9 @@
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetSection = document.getElementById(targetId);
-                const container = document.querySelector('.global-site-container');
-                if (targetSection && container) {
-                    container.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                const wrapper = document.querySelector('.scroll-wrapper');
+                if (targetSection && wrapper) {
+                    wrapper.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
                 }
             });
         });
@@ -1182,19 +1213,21 @@
             if (!contentFaq || !navUmfrage) return;
 
             // Mostrar navbar-umfrage SOLO cuando estamos cerca del fondo de la página
+            const wrapper = document.querySelector('.scroll-wrapper');
             function checkScroll() {
-                const scrollPosition = window.scrollY + window.innerHeight;
-                const pageHeight = document.documentElement.scrollHeight;
+                if (!wrapper) return;
+                const scrollPosition = wrapper.scrollTop + wrapper.clientHeight;
+                const scrollHeight = wrapper.scrollHeight;
 
                 // Cuando el usuario esté a menos de 120px del fondo
-                if (pageHeight - scrollPosition < 120) {
+                if (scrollHeight - scrollPosition < 120) {
                     navUmfrage.classList.add('visible');
                 } else {
                     navUmfrage.classList.remove('visible');
                 }
             }
 
-            window.addEventListener('scroll', checkScroll);
+            if (wrapper) wrapper.addEventListener('scroll', checkScroll);
             // Ejecutar una vez al inicio por si ya estamos abajo
             checkScroll();
         });
