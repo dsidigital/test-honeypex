@@ -46,42 +46,46 @@
       html, body {
         margin: 0;
         padding: 0;
+        height: 100%;
         font-family: Arial, sans-serif;
-        background-color: #dfeaff;
+        overflow: hidden;
         overflow-x: hidden;
         width: 100%;
         position: relative;
-        min-height: 100vh;
+        background-color: #dfeaff;
       }
 
       body {
         background: transparent;
-        min-height: 100dvh;
       }
 
-      /* Scrollbar idéntico a index.html */
-
-      html, body {
-          scrollbar-width: auto;
-          scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+      /* ===== SCROLL WRAPPER (maneja el scroll de toda la página) ===== */
+      .scroll-wrapper {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        position: relative;
+        scrollbar-width: auto;
+        scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
       }
 
-      html::-webkit-scrollbar {
-          width: 8px;
+      .scroll-wrapper::-webkit-scrollbar {
+        width: 8px;
       }
 
-      html::-webkit-scrollbar-track {
-          background: transparent;
+      .scroll-wrapper::-webkit-scrollbar-track {
+        background: transparent;
       }
 
-      html::-webkit-scrollbar-thumb {
-          background-color: rgba(0, 0, 0, 0.3);
-          border-radius: 4px;
+      .scroll-wrapper::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
       }
 
-      html::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(0, 0, 0, 0.5);
-      }      
+      .scroll-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      
       /* ===== BACKGROUND ===== */
       .tunnel-bg {
         position: fixed;
@@ -721,6 +725,7 @@
           </div>
     </header>
 
+    <div class="scroll-wrapper">
     <section class="global-site-container">
         <div class="content-block-pilot" id="kontakt">
             
@@ -1095,13 +1100,15 @@
           <a href="#impressum">IMPRESSUM</a>          
         </div>
     </footer>
+    </div><!-- .scroll-wrapper -->
 
     <script>
 
         // Scroll al top al cargar
+        window.onbeforeunload = function () { window.scrollTo(0, 0); };
         window.onload = function () {
-            const container = document.querySelector('.global-site-container');
-            if (container) container.scrollTop = 0;
+            const wrapper = document.querySelector('.scroll-wrapper');
+            if (wrapper) wrapper.scrollTop = 0;
             window.scrollTo(0, 0);
         };
         if (history.scrollRestoration) history.scrollRestoration = 'manual';
@@ -1115,9 +1122,9 @@
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetSection = document.getElementById(targetId);
-                const container = document.querySelector('.global-site-container');
-                if (targetSection && container) {
-                    container.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                const wrapper = document.querySelector('.scroll-wrapper');
+                if (targetSection && wrapper) {
+                    wrapper.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
                 }
             });
         });
@@ -1131,18 +1138,20 @@
             if (!globalSiteContainer || !navUmfrage) return;
 
             // Mostrar navbar-umfrage SOLO cuando llegamos al final del contenido principal
+            const wrapper = document.querySelector('.scroll-wrapper');
             function checkScroll() {
-                const containerRect = globalSiteContainer.getBoundingClientRect();
-                const threshold = 120; // px antes del final para activar
+                if (!wrapper) return;
+                const scrollPosition = wrapper.scrollTop + wrapper.clientHeight;
+                const scrollHeight = wrapper.scrollHeight;
 
-                if (containerRect.bottom <= window.innerHeight + threshold) {
+                if (scrollHeight - scrollPosition < 120) {
                     navUmfrage.classList.add('visible');
                 } else {
                     navUmfrage.classList.remove('visible');
                 }
             }
 
-            window.addEventListener('scroll', checkScroll);
+            if (wrapper) wrapper.addEventListener('scroll', checkScroll);
             window.addEventListener('resize', checkScroll);
             // Ejecutar una vez al inicio por si ya estamos abajo
             checkScroll();
@@ -1151,9 +1160,10 @@
         window.addEventListener("load", function () {
           if (window.location.hash) {
             const target = document.querySelector(window.location.hash);
-            if (target) {
+            const wrapper = document.querySelector('.scroll-wrapper');
+            if (target && wrapper) {
               setTimeout(() => {
-                target.scrollIntoView({ behavior: "smooth" });
+                wrapper.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
               }, 100);
             }
           }
