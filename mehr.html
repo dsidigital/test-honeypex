@@ -147,31 +147,28 @@
         /* ========== NAVBAR ========== */
         .navbar {
             position: fixed;
-            top: 3vh;
+            top: 2vh;
             left: 50%;
             transform: translateX(-50%);
             background-color: #000;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            padding: 1.2vh 2.5vw;
+            padding: 1vh 4vw;
             z-index: 1000;
             border: 1px solid #333;
-            width: auto;
-            max-width: 1000px;
+            width: 92%;
+            max-width: 92vw;
             justify-content: space-between;
             box-sizing: border-box;
         }
 
-        
         .logo-nav {
             font-weight: bold;
             color: white;
             font-size: clamp(1rem, 3vw, 1.5rem);
             display: flex;
             align-items: center;
-            margin-right: 2.5vw;
-
         }
         .logo-nav span { color: var(--neon-purple); margin-left: 2px; }
 
@@ -184,9 +181,8 @@
             display: flex;
             align-items: center;
             gap: clamp(0.8rem, 2.5vw, 2rem);
-            /*gap: 2vw;*/
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
@@ -198,10 +194,7 @@
         .nav-links a:hover { color: var(--neon-blue); }
 
         .divider {
-            display: block;
-            width: 2px;
-            height: 3vh;
-            background-color: var(--neon-blue);
+            display: none;
         }
 
        /* ========== NAVBAR - UMFRAGE ========== */
@@ -218,7 +211,7 @@
             padding: 1.5vh 1.5vw;
             z-index: 1000;
             border: 1px solid #333;
-            width: 60vw;
+            width: 92%;
             max-width: 36vw;
             min-width: 18rem;
             box-sizing: border-box;
@@ -231,6 +224,7 @@
         .navbar-umfrage.visible {
             opacity: 1;
             visibility: visible;
+            -webkit-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
         }
 
@@ -259,7 +253,8 @@
 
         .navbar-umfrage .divider-umfrage {
             display: block;
-            width: 0.12em;
+            width: 1px;
+            min-width: 1px;
             height: 3vh;
             background-color: var(--neon-blue);
             opacity: 1;
@@ -648,10 +643,6 @@
                 padding: 1vh 3vw;
             }
 
-            .logo-nav {
-                margin-right: 1vw;
-            }
-
             .logo-nav-img {
                 width: clamp(6rem, 16vw, 8rem);
             }
@@ -664,11 +655,6 @@
                 font-size: clamp(0.6rem, 2.2vw, 0.75rem);
             }
 
-            /* Ocultar dividers en móvil para evitar gaps irregulares */
-            .divider {
-                display: none;
-            }
-
             /* Contenedor principal */
             .global-site-container {
                 width: 92%;
@@ -679,7 +665,7 @@
             .content-block-pilot {
                 width: 100%;
                 max-width: 100%;
-                margin: 12vh auto 8vh auto;
+                margin: 12vh auto 10rem auto;
                 padding: 2rem 5vw;
                 border-radius: 1.25rem;
             }
@@ -798,32 +784,9 @@
 
             /* Footer navbar */
             .navbar-umfrage {
-                width: 80%;
-                max-width: 80%;
+                width: 92%;
+                max-width: 92%;
                 min-width: unset;
-                padding: 0.8vh 2.5vw;
-                transform: translate(-50%, 24px);
-            }
-
-            .navbar-umfrage.visible {
-                transform: translate(-50%, 0);
-            }
-
-            .nav-links-umfrage {
-                width: 100%;
-                gap: 2vw;
-            }
-
-            .nav-links-umfrage a {
-                font-size: clamp(0.65rem, 2.3vw, 0.8rem);
-            }
-
-            .divider {
-                height: 2.5vh;
-            }
-            
-            .divider-umfrage {
-                height: 2.2vh;
             }
         }
 
@@ -840,6 +803,92 @@
 
             .pilot-title {
                 font-size: clamp(1.8rem, 4vw, 2.5rem);
+            }
+        }
+
+        /* ========== TABLET (768px - 1023px) ========== */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .navbar {
+                width: 92%;
+                max-width: 92%;
+                padding: 1.2vh 3vw;
+            }
+
+            .navbar-umfrage {
+                width: 92%;
+                max-width: 70%;
+                padding: 1vh 2vw;
+            }
+
+            .divider {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 3vh;
+                background-color: #0044ff;
+            }
+
+            .navbar-umfrage .divider-umfrage {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 2.5vh;
+                background-color: #0044ff;
+            }
+        }
+
+        /* ========== DESKTOP/LAPTOP (1024px+) ========== */
+        @media (min-width: 1024px) {
+            .navbar {
+                width: auto;
+                max-width: 1000px;
+                padding: 1.2vh 2.5vw;
+                top: 3vh;
+            }
+
+            .navbar-umfrage {
+                width: auto;
+                max-width: 800px;
+                padding: 1vh 2vw;
+                bottom: 3vh;
+            }
+
+            .nav-links, .nav-links-umfrage {
+                gap: 2vw;
+            }
+
+            .divider {
+                display: block;
+                width: 1px;
+                min-width: 1px;
+                height: 3vh;
+                background-color: #0044ff;
+            }
+
+            .navbar-umfrage .divider-umfrage {
+                width: 1px;
+                min-width: 1px;
+                height: 2.5vh;
+            }
+
+            .logo-nav {
+                margin-right: 2.5vw;
+            }
+        }
+
+        /* ========== 4K & ULTRA-WIDE (1920px+) ========== */
+        @media (min-width: 1920px) {
+            .navbar {
+                max-width: 1400px;
+            }
+
+            .navbar-umfrage {
+                max-width: 1200px;
+            }
+
+            .navbar-umfrage .divider-umfrage {
+                width: 1px;
+                min-width: 1px;
             }
         }
 

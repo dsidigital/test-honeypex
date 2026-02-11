@@ -122,41 +122,42 @@
       /* ===== NAVBAR ===== */
       .navbar {
         position: fixed;
-        top: 3vh;
+        top: 2vh;
         left: 50%;
         transform: translateX(-50%);
         background-color: #000;
-        border-radius: 3.125rem;
+        border-radius: 50px;
         display: flex;
         align-items: center;
-        padding: 1.2vh 2.5vw;
+        padding: 1vh 4vw;
         z-index: 1000;
-        border: 0.0625rem solid #333;
-        max-width: 62.5rem;
+        border: 1px solid #333;
+        width: 92%;
+        max-width: 92vw;
+        justify-content: space-between;
         box-sizing: border-box;
-        will-change: transform;
       }
-      
+
       .logo-nav {
         font-weight: bold;
         color: white;
         font-size: clamp(1rem, 3vw, 1.5rem);
         display: flex;
         align-items: center;
-        margin-right: 2.5vw;
       }
-      
+      .logo-nav span { color: var(--neon-purple); margin-left: 2px; }
+
       .logo-nav-img {
         width: clamp(7rem, 12vw, 10rem);
         object-fit: contain;
       }
-      
+
       .nav-links {
         display: flex;
         align-items: center;
         gap: clamp(0.8rem, 2.5vw, 2rem);
       }
-      
+
       .nav-links a {
         color: white;
         text-decoration: none;
@@ -165,80 +166,74 @@
         letter-spacing: 0.05em;
         transition: color 0.3s;
       }
-      
-      .nav-links a:hover {
+      .nav-links a:hover { color: var(--neon-blue); }
+
+      .divider {
+        display: none;
+      }
+
+      /* ========== NAVBAR - UMFRAGE ========== */
+
+      .navbar-umfrage {
+        position: fixed;
+        left: 50%;
+        bottom: 2vh;
+        background-color: #000;
+        border-radius: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5vh 1.5vw;
+        z-index: 1000;
+        border: 1px solid #333;
+        width: 92%;
+        max-width: 36vw;
+        min-width: 18rem;
+        box-sizing: border-box;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s;
+        transform: translate(-50%, 24px);
+      }
+
+      .navbar-umfrage.visible {
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+      }
+
+      .nav-links-umfrage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        gap: 1.5vw;
+      }
+
+      .nav-links-umfrage a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: clamp(0.65rem, 1.8vw, 0.9rem);
+        letter-spacing: 0.05em;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-links-umfrage a:hover {
         color: var(--neon-blue);
       }
-      
-      .divider {
-        width: 0.125rem;
+
+      .navbar-umfrage .divider-umfrage {
+        display: block;
+        width: 1px;
+        min-width: 1px;
         height: 3vh;
         background-color: var(--neon-blue);
-      }
-      
-/* ========== NAVBAR - UMFRAGE ========== */ 
-     
-      .navbar-umfrage { 
-        position: fixed; 
-        left: 50%; 
-        bottom: 2vh; 
-        background-color: #000; 
-        border-radius: 3em; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        padding: 1.5vh 1.5vw; 
-        z-index: 1000; 
-        border: 1px solid #333; 
-        width: 60vw; 
-        max-width: 36vw; 
-        min-width: 18rem; 
-        box-sizing: border-box; 
-        opacity: 0; 
-        visibility: hidden; 
-        transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s; /* desplazado hacia abajo cuando oculto */ 
-        transform: translate(-50%, 24px); 
-        transform: translateZ(0);
-        will-change: transform;
-      } 
-      
-      .navbar-umfrage.visible { 
-        opacity: 1; 
-        visibility: visible; 
-        transform: translate(-50%, 0);
-      } 
-      
-      .nav-links-umfrage { 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        width: 80%; 
-        gap: 1.5vw; 
-      } 
-      
-      .nav-links-umfrage a { 
-        color: white; 
-        text-decoration: none; 
-        font-weight: bold; 
-        font-size: clamp(0.65rem, 1.8vw, 0.9rem); 
-        letter-spacing: 0.05em; 
-        transition: color 0.3s; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-      } 
-      
-      .nav-links-umfrage a:hover { 
-        color: var(--neon-blue); 
-      } 
-      
-      .navbar-umfrage .divider-umfrage { 
-        display: block; 
-        width: 0.12em; 
-        height: 3vh; 
-        background-color: var(--neon-blue); 
-        opacity: 1; 
-        flex-shrink: 0; 
+        opacity: 1;
+        flex-shrink: 0;
       }
             
       /* ===== CONTENT BLOCK ===== */
@@ -428,22 +423,6 @@
         transform: translateZ(0);
       }
 
-      /* Navbar superior más compacta */
-      .navbar {
-        top: 2vh;
-        padding: 1vh 2vw;
-        width: 92%;
-        max-width: 94vw;
-      }
-
-      .logo-nav-img {
-        width: clamp(6rem, 14vw, 9rem);
-      }
-
-      .nav-links a {
-        font-size: clamp(0.6rem, 1.6vw, 0.85rem);
-      }
-
       /* Contenedor landscape */
       .global-site-container {
         width: 92%;
@@ -485,17 +464,6 @@
         padding: 0;
       }
 
-      /* Footer navbar visible sin tapar contenido */
-      .navbar-umfrage {
-        bottom: 1.5vh;
-        padding: 0.7vh 1.8vw;
-        width: 88%;
-        max-width: 85vw;
-      }
-      
-      .navbar-umfrage .divider-umfrage {
-        height: 2.2vh;
-      }
     }
 
     /* ===== MOBILE PORTRAIT ===== */
@@ -515,6 +483,18 @@
         padding: 1vh 3vw;
       }
 
+      .logo-nav-img {
+        width: clamp(6rem, 16vw, 8rem);
+      }
+
+      .nav-links {
+        gap: clamp(0.6rem, 3vw, 1rem);
+      }
+
+      .nav-links a {
+        font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+      }
+
       /* Contenedor principal */
       .global-site-container {
         width: 92%;
@@ -525,7 +505,7 @@
       .content-block-pilot {
         width: 100%;
         max-width: 100%;
-        margin: 12vh auto 8vh auto;
+        margin: 12vh auto 10rem auto;
         padding: 2rem 5vw;
         border-radius: 1.25rem;
       }
@@ -627,23 +607,9 @@
 
       /* Footer navbar */
       .navbar-umfrage {
-        width: 88%;
-        max-width: 88%;
+        width: 92%;
+        max-width: 92%;
         min-width: unset;
-        padding: 0.8vh 2.5vw;
-      }
-
-      .nav-links-umfrage {
-        width: 100%;
-        gap: 2vw;
-      }
-
-      .nav-links-umfrage a {
-        font-size: clamp(0.65rem, 2.3vw, 0.8rem);
-      }
-      
-      .navbar-umfrage .divider-umfrage {
-        height: 2.2vh;
       }
     }
 
@@ -661,6 +627,93 @@
     }
 
     /* Navbar superior: centrado consistente en movil/tablet */
+    /* ===== TABLET (768px - 1023px) ===== */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .navbar {
+        width: 92%;
+        max-width: 92%;
+        padding: 1.2vh 3vw;
+      }
+
+      .navbar-umfrage {
+        width: 92%;
+        max-width: 70%;
+        padding: 1vh 2vw;
+      }
+
+      .divider {
+        display: block;
+        width: 1px;
+        min-width: 1px;
+        height: 3vh;
+        background-color: #0044ff;
+      }
+
+      .navbar-umfrage .divider-umfrage {
+        display: block;
+        width: 1px;
+        min-width: 1px;
+        height: 2.5vh;
+        background-color: #0044ff;
+      }
+    }
+
+    /* ===== DESKTOP/LAPTOP (1024px+) ===== */
+    @media (min-width: 1024px) {
+      .navbar {
+        width: auto;
+        max-width: 1000px;
+        padding: 1.2vh 2.5vw;
+        top: 3vh;
+      }
+
+      .navbar-umfrage {
+        width: auto;
+        max-width: 800px;
+        padding: 1vh 2vw;
+        bottom: 3vh;
+      }
+
+      .nav-links, .nav-links-umfrage {
+        gap: 2vw;
+      }
+
+      .divider {
+        display: block;
+        width: 1px;
+        min-width: 1px;
+        height: 3vh;
+        background-color: #0044ff;
+      }
+
+      .navbar-umfrage .divider-umfrage {
+        width: 1px;
+        min-width: 1px;
+        height: 2.5vh;
+      }
+
+      .logo-nav {
+        margin-right: 2.5vw;
+      }
+    }
+
+    /* ===== 4K & ULTRA-WIDE (1920px+) ===== */
+    @media (min-width: 1920px) {
+      .navbar {
+        max-width: 1400px;
+      }
+
+      .navbar-umfrage {
+        max-width: 1200px;
+      }
+
+      .navbar-umfrage .divider-umfrage {
+        width: 1px;
+        min-width: 1px;
+      }
+    }
+
+    /* ===== Navbar centering (movil/tablet) ===== */
     @media (max-width: 1023px) {
       .navbar {
         justify-content: center;
@@ -781,6 +834,7 @@
                   <div class="legal-col">
                     <h3>Geschäftsführer</h3>
                     <p>Philipp Hock</p>
+                    <p>Dennis Schlinge</p>
                   </div>
               
                   <div class="legal-col">
