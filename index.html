@@ -249,13 +249,19 @@
             position: absolute;
             left: 50%;
             top: 26vh;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(0.1);
             z-index: 100;
             width: var(--logo-width-mobile);
             max-width: 320px;
             height: auto;
             opacity: 0;
-            animation: emergeDesdeTunelMobile 1.8s cubic-bezier(0.19, 1, 0.22, 1) 0.2s forwards;
+            filter: blur(12px);
+            /* Animación controlada por JS para evitar bug Safari con vh */
+        }
+
+        /* Clase añadida por JS cuando el viewport está estable */
+        .main-logo-fixed.logo-ready {
+            animation: emergeDesdeTunelMobile 1.8s cubic-bezier(0.19, 1, 0.22, 1) 0.2s both;
         }
 
         @keyframes emergeDesdeTunelMobile {
@@ -736,23 +742,32 @@
                 position: fixed;
                 left: 5vw;
                 top: 50%;
-                transform: translateY(-50%);
+                /* Estado inicial = 0% del keyframe, sin depender de vh */
+                transform: translate3d(50vw, calc(var(--vh-offset, -38vh) - 50%), 0) scale(0.08);
                 width: var(--logo-width-desktop);
                 max-width: 650px;
                 grid-column: 1;
-                animation: emergeDesdeTunelDesktop 3.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
                 z-index: 50;
+                opacity: 0;
+                filter: blur(12px);
+                will-change: transform, opacity, filter;
+                /* Animación controlada por JS para evitar bug Safari con vh */
+            }
+
+            /* Clase añadida por JS cuando el viewport está estable */
+            .main-logo-fixed.logo-ready {
+                animation: emergeDesdeTunelDesktop 3.5s cubic-bezier(0.19, 1, 0.22, 1) both !important;
             }
 
             @keyframes emergeDesdeTunelDesktop {
                 0% { 
-                    transform: translate(calc(55vw - 5vw), calc(12vh - 50%)) scale(0.08); 
+                    transform: translate3d(50vw, var(--logo-start-y, calc(-38vh - 50%)), 0) scale(0.08); 
                     opacity: 0; 
                     filter: blur(12px); 
                 }
                 35% { opacity: 0.6; }
                 100% { 
-                    transform: translate(0, -50%) scale(1);
+                    transform: translate3d(0, -50%, 0) scale(1);
                     opacity: 1; 
                     filter: blur(0px); 
                 }
@@ -990,7 +1005,7 @@
                 background-attachment: scroll !important;
             }
 
-            .main-logo-fixed {
+            .main-logo-fixed.logo-ready {
                 animation-duration: 1.8s !important;
             }
         }
@@ -1266,6 +1281,49 @@
 </div>
 
     <script>
+        // ========== FIX SAFARI: Logo animation con viewport real ==========
+        // Safari no finaliza el cálculo de vh al recargar, así que:
+        // 1. Calculamos el offset Y con window.innerHeight real
+        // 2. Esperamos a que el viewport esté estable (doble rAF)
+        // 3. Entonces disparamos la animación
+        (function() {
+            function setLogoVars() {
+                var vh = window.innerHeight;
+                // Offset Y para el 0% del keyframe desktop:
+                // El logo tiene top:50%, queremos que arranque a ~12% del viewport desde arriba
+                // => translateY necesario = (0.12 * vh) - (0.50 * vh) = -0.38 * vh
+                var startY = (0.65 * vh) - (0.50 * vh);
+                document.documentElement.style.setProperty('--logo-start-y', 'calc(' + startY + 'px - 50%)');
+                document.documentElement.style.setProperty('--vh-offset', startY + 'px');
+                console.log('startY', startY);
+            }
+
+            function triggerLogoAnimation() {
+                setLogoVars();
+                // Doble requestAnimationFrame: espera a que Safari complete un ciclo
+                // de pintura completo y tenga viewport dimensions correctas
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        setLogoVars(); // Recalcular con viewport ya asentado
+                        var logo = document.querySelector('.main-logo-fixed');
+                        if (logo) {
+                            logo.classList.add('logo-ready');
+                        }
+                    });
+                });
+            }
+
+            // Disparar tanto en DOMContentLoaded como en load (el que llegue después)
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', triggerLogoAnimation);
+            } else {
+                triggerLogoAnimation();
+            }
+
+            // Recalcular si el viewport cambia (resize, rotación)
+            window.addEventListener('resize', setLogoVars);
+        })();
+
         // Scroll al top al cargar (solo si no hay hash)
         window.onbeforeunload = function () { window.scrollTo(0, 0); };
         function scrollToHash() {
