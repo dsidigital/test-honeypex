@@ -58,8 +58,30 @@
         background: transparent;
         min-height: 100dvh;
       }
-      
-      
+
+      /* Scrollbar idéntico a index.html */
+
+      html, body {
+          scrollbar-width: auto;
+          scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+      }
+
+      html::-webkit-scrollbar {
+          width: 8px;
+      }
+
+      html::-webkit-scrollbar-track {
+          background: transparent;
+      }
+
+      html::-webkit-scrollbar-thumb {
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+      }
+
+      html::-webkit-scrollbar-thumb:hover {
+          background-color: rgba(0, 0, 0, 0.5);
+      }      
       /* ===== BACKGROUND ===== */
       .tunnel-bg {
         position: fixed;
@@ -67,15 +89,20 @@
         left: 0;
         width: 100vw;
         height: 100vh;
+        height: 100dvh;               /* Safari dynamic viewport */
         background-image: url("img/Honeypex Background.png");
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        /* background-attachment: fixed  ELIMINADO — el div ya es position:fixed,
+           y esta propiedad rompe el fondo en Safari iOS */
         z-index: 0;
         pointer-events: none;
+        -webkit-transform: translateZ(0);  /* fuerza composición GPU en Safari */
+        transform: translateZ(0);
       }
-            
+
+      
       /* ===== CONTAINER ===== */
       .global-site-container {
         position: relative;
@@ -87,7 +114,7 @@
         flex-direction: column;
         min-height: 100vh;
       }
-      
+           
       /* ===== NAVBAR ===== */
       .navbar {
         position: fixed;
@@ -393,6 +420,8 @@
       .tunnel-bg {
         height: 100dvh;
         background-position: center center;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
       }
 
       /* Navbar superior más compacta */
@@ -710,11 +739,10 @@
             <div class="contact-grid">
             
               <div class="contact-block">
-                <h3>ZENTRALE</h3>
-                <p>wisepex digital solutions GmbH</p>
+                <h3>Zentrale</h3>
+                <p>wisepex GmbH</p>
                 <p>Baumbreite 19</p>
                 <p>49170 Hagen a.T.W.</p>
-                <p>Germany</p>
               </div>
           
               <div class="contact-block">
@@ -738,27 +766,27 @@
                 <div class="legal-grid-4">
                   <div class="legal-col">
                     <h3>ZENTRALE</h3>
-                    <p>wisepex digital solutions GmbH</p>
+                    <p>wisepex GmbH</p>
                     <p>Baumbreite 19</p>
                     <p>49170 Hagen a.T.W.</p>
-                    <p>Germany</p>
                   </div>
               
                   <div class="legal-col">
-                    <h3>Geschäftsführer</h3>
-                    <p>Philipp Hock</p>
+                    <h3>VERTRETEN DURCH</h3>
+                    <p>Oliver Popken</p>
                     <p>Dennis Schlinge</p>
+                    <p>Soeren Wentzel</p>
                   </div>
               
                   <div class="legal-col">
                     <h3>HANDELSREGISTER</h3>
                     <p>Amtsgericht Osnabrück</p>
-                    <p>HRB 221893</p>
+                    <p>HRB 220222</p>
                   </div>
               
                   <div class="legal-col">
                     <h3>UST-ID</h3>
-                    <p>DE455706546</p>
+                    <p>DE367321543</p>
                   </div>
                 </div>
             <div class="divider-line"></div>
@@ -1132,9 +1160,5 @@
         });
         
 </script>
-</body>
-
-            
-    </script>
 </body>
 </html>
