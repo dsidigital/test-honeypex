@@ -78,33 +78,37 @@
             pointer-events: none;
         }
 
-        /* ========== SCROLL CONTAINER ========== */
-        .ppt-container {
+        /* ========== SCROLL WRAPPER (maneja el scroll de toda la página) ========== */
+        .scroll-wrapper {
             height: 100vh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
             position: relative;
-            /* z-index: 1; */
-            scrollbar-width:auto;
+            scrollbar-width: auto;
             scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
         }
-        
+
         /* Barra de scroll personalizada para Chrome/Safari/Edge */
-        .ppt-container::-webkit-scrollbar {
+        .scroll-wrapper::-webkit-scrollbar {
             width: 8px;
         }
         
-        .ppt-container::-webkit-scrollbar-track {
+        .scroll-wrapper::-webkit-scrollbar-track {
             background: transparent;
         }
         
-        .ppt-container::-webkit-scrollbar-thumb {
+        .scroll-wrapper::-webkit-scrollbar-thumb {
             background-color: rgba(0, 0, 0, 0.3);
             border-radius: 4px;
         }
         
-        .ppt-container::-webkit-scrollbar-thumb:hover {
+        .scroll-wrapper::-webkit-scrollbar-thumb:hover {
             background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* ========== CONTENT CONTAINER ========== */
+        .ppt-container {
+            position: relative;
         }
 
         section {
@@ -238,15 +242,14 @@
         .global-site-container {
             position: relative;
             width: 100%;
-            height: 100vh;
-            overflow: hidden;
+            overflow: visible;
             display: flex;
             flex-direction: column;
         }
 
         /* Logo centrado arriba en mobile */
         .main-logo-fixed {
-            position: absolute;
+            position: fixed;
             left: 50%;
             top: 26vh;
             transform: translate(-50%, -50%) scale(0.1);
@@ -1105,6 +1108,7 @@
         </div>
     </header>
 
+    <div class="scroll-wrapper">
     <div class="global-site-container">
         <img src="img/Projektlogo-single.png" alt="Projekt Honeypex" class="main-logo-fixed">
 
@@ -1279,6 +1283,7 @@
 
     </div>
 </div>
+</div><!-- .scroll-wrapper -->
 
     <script>
         // ========== FIX SAFARI: Logo animation con viewport real ==========
@@ -1327,19 +1332,19 @@
         // Scroll al top al cargar (solo si no hay hash)
         window.onbeforeunload = function () { window.scrollTo(0, 0); };
         function scrollToHash() {
-            const container = document.querySelector('.ppt-container');
-            if (!container) return;
+            const wrapper = document.querySelector('.scroll-wrapper');
+            if (!wrapper) return;
 
             const hash = window.location.hash;
             if (!hash) {
-                container.scrollTop = 0;
+                wrapper.scrollTop = 0;
                 window.scrollTo(0, 0);
                 return;
             }
 
             const target = document.querySelector(hash);
             if (target) {
-                container.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                wrapper.scrollTo({ top: target.offsetTop, behavior: 'auto' });
             }
         }
         window.addEventListener('load', scrollToHash);
@@ -1355,9 +1360,9 @@
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetSection = document.getElementById(targetId);
-                const container = document.querySelector('.ppt-container');
-                if (targetSection && container) {
-                    container.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                const wrapper = document.querySelector('.scroll-wrapper');
+                if (targetSection && wrapper) {
+                    wrapper.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
                 }
             });
         });
@@ -1411,9 +1416,10 @@
         window.addEventListener("load", function () {
             if (window.location.hash) {
               const target = document.querySelector(window.location.hash);
-              if (target) {
+              const wrapper = document.querySelector('.scroll-wrapper');
+              if (target && wrapper) {
                 setTimeout(() => {
-                  target.scrollIntoView({ behavior: "smooth" });
+                  wrapper.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
                 }, 100);
               }
             }
