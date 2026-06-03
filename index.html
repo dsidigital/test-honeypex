@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#dfeaff">
-    <title>Honeypex - Interface</title>
+    <title>Prüfpflichten &amp; Fristen digital verwalten | honeypex für KMU</title>
+    <meta name="description" content="UVV, HU-Fristen &amp; Führerscheinkontrolle zentral verwalten. Ohne Excel-Chaos. Für KMU ab 25 Mitarbeitenden. 30 Tage kostenlos testen →">
+    <link rel="canonical" href="https://honeypex.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://honeypex.com/">
+    <meta property="og:title" content="Prüfpflichten &amp; Fristen digital verwalten | honeypex für KMU">
+    <meta property="og:description" content="UVV, HU-Fristen &amp; Führerscheinkontrolle zentral verwalten. Ohne Excel-Chaos. Für KMU ab 25 Mitarbeitenden.">
+    <meta property="og:image" content="https://honeypex.com/img/projektlogo-single.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prüfpflichten &amp; Fristen digital verwalten | honeypex">
+    <meta name="twitter:description" content="UVV, HU-Fristen &amp; Führerscheinkontrolle zentral verwalten. Für KMU ab 25 Mitarbeitenden.">
+    <meta name="twitter:image" content="https://honeypex.com/img/projektlogo-single.webp">
+    <link rel="icon" href="img/projektlogo-single.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="img/projektlogo-single.webp">
     <!-- Critical paint: evita flash negro antes de cargar imágenes/CSS -->
     <style>
         html, body { background-color: #dfeaff; }
@@ -19,8 +32,8 @@
         }  
     </style>
     <!-- Preload del background para evitar "flash" y mejorar LCP -->
-    <link rel="preload" as="image" href="img/Honeypex%20Background.png" fetchpriority="high">
-    <link rel="preload" as="image" href="img/Honeypex-Background-Mobile.png" media="(max-width: 720px)" fetchpriority="high">
+    <link rel="preload" as="image" href="img/honeypex-background.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/honeypex-background-mobile.webp" media="(max-width: 720px)" fetchpriority="high">
     <style>
         
         /* ========================================
@@ -68,7 +81,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: url("img/Honeypex-Background-Mobile.png");
+            background-image: url("img/honeypex-background-mobile.webp");
             background-size: cover;
             background-position: 75% center;
             background-repeat: no-repeat;
@@ -350,7 +363,7 @@
             line-height: 1.5;
         }
 
-        .content-block h3 {
+        .content-block h2, .content-block h3 {
             font-size: clamp(1.05rem, 3.5vw, 1.3rem);
             margin-bottom: 2vh;
             color: #000;
@@ -558,7 +571,7 @@
             }
 
             /* Título centrado en umfrage */
-            #umfrage .content-block h3 {
+            #umfrage .content-block h2, #umfrage .content-block h3 {
                 text-align: center;
                 margin-bottom: 3vh;
             }
@@ -601,7 +614,7 @@
             }
 
             body, .tunnel-bg {
-                background-image: url("img/Honeypex%20Background.png");
+                background-image: url("img/honeypex-background.webp");
                 background-position: center center;
                 background-attachment: scroll;
             }
@@ -691,7 +704,7 @@
             }
 
             body, .tunnel-bg {
-                background-image: url("img/Honeypex%20Background.png");
+                background-image: url("img/honeypex-background.webp");
                 background-position: center center;
                 background-attachment: fixed;
             }
@@ -822,7 +835,7 @@
                 font-size: clamp(1.1rem, 1.4vw, 1.5rem);
             }
 
-            .content-block h3 {
+            .content-block h2, .content-block h3 {
                 font-size: clamp(1.3rem, 1.65vw, 1.9rem);
                 text-align: center;
             }
@@ -990,7 +1003,7 @@
                 text-align: center;
             }
 
-            .content-block h3 {
+            .content-block h2, .content-block h3 {
                 font-size: clamp(1.6rem, 1.85vw, 2.3rem);
                 text-align: center;
             }
@@ -1010,7 +1023,7 @@
         ======================================== */
         @media (hover: none) and (pointer: coarse) and (max-width: 1023px) {
             body, .tunnel-bg {
-                background-image: url("img/Honeypex-Background-Mobile.png") !important;
+                background-image: url("img/honeypex-background-mobile.webp") !important;
                 background-attachment: scroll !important;
             }
 
@@ -1093,6 +1106,64 @@
         }
 
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://honeypex.com/#organization",
+      "name": "honeypex by wisepex",
+      "url": "https://honeypex.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://honeypex.com/img/projektlogo-single.webp"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://honeypex.com/kontakt.html"
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "honeypex",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Software für Prüfpflichten, HU-Fristen, UVV und Führerscheinkontrolle für KMU.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "30 Tage kostenlos testen"
+      },
+      "url": "https://honeypex.com"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Für wen ist honeypex geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "honeypex ist für Betriebe ab 25 Mitarbeitenden geeignet, die Prüfpflichten, HU-Fristen und Fuhrparkmanagement digital verwalten möchten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet honeypex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "honeypex kann 30 Tage kostenlos getestet werden. Anschließend gibt es bezahlbare Abos für KMU."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1101,7 +1172,7 @@
     <header class="navbar">
         <div class="logo-nav">
             <a href="index.html">
-                <img src="img/Honeypex Logo Wisepex.png" alt="Logo Honeypex Wisepex" class="logo-nav-img">
+                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img">
             </a>        
         </div>
         <div class="nav-links">
@@ -1116,13 +1187,13 @@
 
     <div class="scroll-wrapper">
     <div class="global-site-container">
-        <img src="img/Projektlogo-single.png" alt="Projekt Honeypex" class="main-logo-fixed">
+        <img src="img/projektlogo-single.webp" alt="Projekt Honeypex" class="main-logo-fixed">
 
         <div class="ppt-container">
         <section>
             <!-- Block Intro -->
             <div id="block-intro" class="content-block">
-                <h3 class="intro-title">REALE PROBLEME. EINE EINFACHE PLATTFORM</h3>
+                <h1 class="intro-title">Prüfpflichten &amp; Fristen digital verwalten — einfach, sicher, bezahlbar</h1>
                 <div class="intro-content">
                     <div class="chevron-down">
                         <svg viewBox="0 0 24 24">
@@ -1137,7 +1208,7 @@
         <!-- BLOQUE 1 -->
         <section id="features">
             <div class="content-block">
-                <h3>KEIN IT-GROßPROJEKT – BEZAHLBAR AUCH FÜR KMU</h3>
+                <h2>KEIN IT-GROßPROJEKT – BEZAHLBAR AUCH FÜR KMU</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1152,7 +1223,7 @@
         <!-- BLOQUE 2 -->
         <section id="block-2">
             <div class="content-block">
-                <h3>HU-FRISTENMANAGEMENT FÜR FIRMENFAHRZEUGE</h3>
+                <h2>HU-FRISTENMANAGEMENT FÜR FIRMENFAHRZEUGE</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1167,7 +1238,7 @@
         <!-- BLOQUE 3 -->
         <section id="block-3">
             <div class="content-block">
-                <h3>EINSATZORTABHÄNGIGE PRÜFINTERVALLE</h3>
+                <h2>EINSATZORTABHÄNGIGE PRÜFINTERVALLE</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1182,7 +1253,7 @@
         <!-- BLOQUE 4 -->
         <section id="block-4">
             <div class="content-block">
-                <h3>PRÜFMANAGEMENT FÜR SICHERHEITSRELEVANTES</h3>
+                <h2>PRÜFMANAGEMENT FÜR SICHERHEITSRELEVANTES</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1197,7 +1268,7 @@
         <!-- BLOQUE 5 -->
         <section id="block-5">
             <div class="content-block">
-                <h3>UVV-PRÜFMANAGEMENT FÜR DEN FUHRPARK</h3>
+                <h2>UVV-PRÜFMANAGEMENT FÜR DEN FUHRPARK</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1212,7 +1283,7 @@
         <!-- BLOQUE 6 -->
         <section id="block-6">
             <div class="content-block">
-                <h3>FÜHRERSCHEINKONTROLLE FÜR MITARBEITENDE</h3>
+                <h2>FÜHRERSCHEINKONTROLLE FÜR MITARBEITENDE</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1227,7 +1298,7 @@
         <!-- BLOQUE 7 -->
         <section id="block-7">
             <div class="content-block">
-                <h3>RESERVIERUNG VON FAHRZEUGEN & MASCHINEN</h3>
+                <h2>RESERVIERUNG VON FAHRZEUGEN & MASCHINEN</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1242,7 +1313,7 @@
         <!-- BLOQUE 8 -->
         <section id="block-8">
             <div class="content-block">
-                <h3>SCHADENSMANAGEMENT</h3>
+                <h2>SCHADENSMANAGEMENT</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1257,7 +1328,7 @@
         <!-- BLOQUE 9 - UMFRAGE -->
         <section id="umfrage">
             <div class="content-block">
-                <h3>UMFRAGE</h3>
+                <h2>UMFRAGE</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1270,7 +1341,7 @@
                         <a href="https://forms.office.com/e/y8LCYZbFgk"
                            target="_blank"
                            class="survey-button">
-                            <img src="img/Button Umfrage4.png" alt="An Umfrage teilnehmen">
+                            <img src="img/button-umfrage.webp" alt="An Umfrage teilnehmen">
                         </a>
                     </div>
                 </div>
@@ -1306,7 +1377,6 @@
                 var startY = (0.65 * vh) - (0.50 * vh);
                 document.documentElement.style.setProperty('--logo-start-y', 'calc(' + startY + 'px - 50%)');
                 document.documentElement.style.setProperty('--vh-offset', startY + 'px');
-                console.log('startY', startY);
             }
 
             function triggerLogoAnimation() {

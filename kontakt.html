@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#dfeaff">
-    <title>Honeypex - Interface</title>
+    <title>Kontakt &amp; Impressum – honeypex by wisepex</title>
+    <meta name="description" content="Kontaktdaten, Impressum und Datenschutzinformationen von honeypex by wisepex – Ihre Software für Prüfpflichten und Fristenmanagement.">
+    <link rel="canonical" href="https://honeypex.com/kontakt.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://honeypex.com/kontakt.html">
+    <meta property="og:title" content="Kontakt &amp; Impressum – honeypex by wisepex">
+    <meta property="og:description" content="Kontaktdaten, Impressum und Datenschutz von honeypex by wisepex.">
+    <meta property="og:image" content="https://honeypex.com/img/projektlogo-single.webp">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="img/projektlogo-single.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="img/projektlogo-single.webp">
     <style>
       
       html, body {
@@ -22,8 +32,8 @@
     </style>
 <!-- Preload del background para evitar "flash" y mejorar LCP -->
 
-    <link rel="preload" as="image" href="img/Honeypex Background.png" fetchpriority="high">
-    <link rel="preload" as="image" href="img/Honeypex-Background-Mobile.png" media="(max-width: 900px)" fetchpriority="high">
+    <link rel="preload" as="image" href="img/honeypex-background.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/honeypex-background-mobile.webp" media="(max-width: 900px)" fetchpriority="high">
       
     <style>
       /* ===== VARIABLES ===== */
@@ -94,7 +104,7 @@
         width: 100vw;
         height: 100vh;
         height: 100dvh;               /* Safari dynamic viewport */
-        background-image: url("img/Honeypex Background.png");
+        background-image: url("img/honeypex-background.webp");
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -264,7 +274,7 @@
         object-fit: contain;
       }
       
-      .pilot-title {
+      h1.pilot-title, .pilot-title {
         font-size: clamp(3.5rem, 3.6vw, 4.5rem);
         text-transform: uppercase;
         text-align: center;
@@ -393,9 +403,19 @@
       text-transform: uppercase;
     }
 
+    .section-label {
+      font-size: clamp(0.75rem, 2vw, 0.9rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #000;
+      text-transform: uppercase;
+      margin-bottom: 1.5vh;
+      grid-column: 1 / -1;
+    }
+
     @media (max-width: 900px) {
       .tunnel-bg {
-        background-image: url("img/Honeypex-Background-Mobile.png");
+        background-image: url("img/honeypex-background-mobile.webp");
         background-position: center top;
       }
     }
@@ -528,7 +548,7 @@
       }
 
       /* Títulos centrados absolutamente */
-      .pilot-title {
+      h1.pilot-title, .pilot-title {
         font-size: clamp(2rem, 8vw, 3rem);
         text-align: center;
         width: 100%;
@@ -756,6 +776,24 @@
 
 
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://honeypex.com/#organization",
+  "name": "honeypex by wisepex",
+  "url": "https://honeypex.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://honeypex.com/img/projektlogo-single.webp"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://honeypex.com/kontakt.html"
+  }
+}
+</script>
 </head>
 
 <body>
@@ -765,7 +803,7 @@
     <header class="navbar">
         <div class="logo-nav">
             <a href="index.html">
-                <img src="img/Honeypex Logo Wisepex.png" alt="Logo Honeypex Wisepex" class="logo-nav-img">
+                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img">
             </a>            
         </div>
         <div class="nav-links">
@@ -784,10 +822,10 @@
             
             <div class="pilot-header-grid">
                 <div class="pilot-header-left">
-                    <img src="img/Projektlogo-single.png" alt="Projekt Logo" class="pilot-logo">
+                    <img src="img/projektlogo-single.webp" alt="Proyecto honeypex — logo" class="pilot-logo" loading="lazy">
                 </div>
                 <div class="pilot-header-center">
-                    <h2 class="pilot-title">KONTAKT</h2>
+                    <h1 class="pilot-title">KONTAKT</h1>
                 </div>
                 <div class="pilot-header-right">
                     <!-- Columna derecha vacía -->
@@ -795,6 +833,7 @@
             </div>
 
             <div class="contact-grid">
+              <h2 class="section-label">KONTAKTDATEN</h2>
             
               <div class="contact-block">
                 <h3>ZENTRALE</h3>
@@ -820,7 +859,7 @@
 
             <div class="legal-section">
 
-                <div class="legal-title" id ="impressum" style="margin-top: 10vh; padding-top: 10vh;">IMPRESSUM</div>
+                <h2 class="legal-title" id="impressum" style="margin-top: 10vh; padding-top: 10vh;">IMPRESSUM</h2>
 
                 <div class="legal-grid-4">
                   <div class="legal-col">
@@ -880,7 +919,7 @@
             <div class="divider-line"></div>
 
             <div class="legal-block legal-block1" id="datenschutz" style="margin-top: 10vh; padding-top: 10vh;">
-              <div class="legal-title">DATENSCHUTZERKLÄRUNG</div>
+              <h2 class="legal-title">DATENSCHUTZERKLÄRUNG</h2>
                       
                 <p><strong>1) Einleitung und Kontaktdaten des Verantwortlichen</strong></p>
             
