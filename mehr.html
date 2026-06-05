@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#dfeaff">
     <title>Pilotkunde werden – honeypex für Betriebe | Jetzt mitmachen</title>
     <meta name="description" content="Werden Sie Pilotkunde bei honeypex und gestalten Sie die Zukunft des Prüfpflichten-Managements mit. Häufige Fragen und alle Infos zum Pilotkunden-Programm.">
     <link rel="canonical" href="https://honeypex.com/mehr.html">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="honeypex">
     <meta property="og:url" content="https://honeypex.com/mehr.html">
     <meta property="og:title" content="Pilotkunde werden – honeypex für Betriebe">
     <meta property="og:description" content="Werden Sie Pilotkunde und gestalten Sie honeypex mit. Alle Infos und FAQ zum Pilotkunden-Programm.">
-    <meta property="og:image" content="https://honeypex.com/img/projektlogo-single.webp">
+    <meta property="og:image" content="https://honeypex.com/img/og-honeypex.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="img/projektlogo-single.webp" type="image/webp">
-    <link rel="apple-touch-icon" href="img/projektlogo-single.webp">
+    <meta name="twitter:title" content="Pilotkunde werden – honeypex für Betriebe">
+    <meta name="twitter:description" content="Werden Sie Pilotkunde und gestalten Sie honeypex mit. Alle Infos und FAQ zum Pilotkunden-Programm.">
+    <meta name="twitter:image" content="https://honeypex.com/img/og-honeypex.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Critical paint: evita flash negro antes de cargar imágenes/CSS -->
     <style>
         html, body { background-color: #dfeaff; }
@@ -164,7 +173,7 @@
             border-radius: 50px;
             display: flex;
             align-items: center;
-            padding: 1vh 4vw;
+            padding: 0.5vh 4vw;
             z-index: 1000;
             border: 1px solid #333;
             width: 92%;
@@ -190,16 +199,18 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: clamp(0.8rem, 2.5vw, 2rem);
+            gap: clamp(0.45rem, 1.3vw, 1.4rem);
+            flex-wrap: nowrap;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: clamp(0.65rem, 1.8vw, 0.9rem);
-            letter-spacing: 0.05em;
+            font-size: clamp(0.6rem, 1.4vw, 0.82rem);
+            letter-spacing: 0.04em;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         .nav-links a:hover { color: var(--neon-blue); }
 
@@ -370,8 +381,8 @@
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
             align-items: center;
-            margin-bottom: 20px;
-            gap: 20px;
+            margin-bottom: 40px;
+            gap: 30px;
         }
 
         .pilot-header-left {
@@ -391,8 +402,7 @@
         }*/
 
         .pilot-logo {
-            width: 210px;
-            height: auto;
+            width: 13rem;
             object-fit: contain;
         }
 
@@ -434,7 +444,7 @@
             top: 0.22em; /* ajustado para centrar mejor el icono de 18px */
             width: 18px;
             height: 18px;
-            background-image: url("img/Sparky blue4.png");
+            background-image: url("img/sparky-blue.webp");
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -650,11 +660,11 @@
             .navbar {
                 width: 92%;
                 max-width: 92%;
-                padding: 1vh 3vw;
+                padding: 0.2vh 4vw;
             }
 
             .logo-nav-img {
-                width: clamp(6rem, 16vw, 8rem);
+                width: clamp(7rem, 18vw, 9rem);
             }
 
             .nav-links {
@@ -675,15 +685,16 @@
             .content-block-pilot {
                 width: 100%;
                 max-width: 100%;
-                margin: 12vh auto 10rem auto;
-                padding: 2rem 5vw;
+                margin: calc(6vh + 70px) auto 10rem auto;
+                padding: 1.2rem 4vw;
                 border-radius: 1.25rem;
             }
 
             /* Header grid a una columna */
             .pilot-header-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 0.8rem;
+                margin-bottom: 0.8rem;
                 text-align: center;
             }
 
@@ -693,9 +704,12 @@
             }
 
             .pilot-logo {
-                width: 140px;
+                width: 19rem;
                 margin: 0 auto;
             }
+
+            .scroll-wrapper { scroll-padding-top: calc(2vh + 70px); }
+            [id] { scroll-margin-top: calc(2vh + 70px); }
 
             /* Títulos centrados */
             h1.pilot-title, .pilot-title {
@@ -821,7 +835,7 @@
             .navbar {
                 width: 92%;
                 max-width: 92%;
-                padding: 1.2vh 3vw;
+                padding: 0.6vh 3vw;
             }
 
             .navbar-umfrage {
@@ -851,14 +865,14 @@
         @media (min-width: 1024px) {
             .navbar {
                 width: auto;
-                max-width: 1000px;
-                padding: 1.2vh 2.5vw;
+                max-width: 1200px;
+                padding: 0.6vh 2.5vw;
                 top: 3vh;
             }
 
             .navbar-umfrage {
                 width: auto;
-                max-width: 800px;
+                max-width: 78vw;
                 padding: 1vh 2vw;
                 bottom: 3vh;
             }
@@ -902,11 +916,10 @@
             }
         }
 
-        /* Navbar superior: centrado consistente en movil/tablet */
+        /* Navbar hamburguesa (movil/tablet) */
         @media (max-width: 1023px) {
             .navbar {
-                justify-content: center;
-                gap: clamp(0.5rem, 2vw, 1.2rem);
+                justify-content: space-between;
             }
 
             .logo-nav {
@@ -915,17 +928,11 @@
             }
 
             .nav-links {
-                justify-content: center;
-                gap: clamp(0.55rem, 2.4vw, 1rem);
+                display: none !important;
             }
 
-            .nav-links .divider {
-                display: block;
-                width: 1px;
-                min-width: 1px;
-                height: 2.4vh;
-                background-color: #0044ff;
-                flex-shrink: 0;
+            #hamburger {
+                display: flex !important;
             }
 
             .navbar-umfrage {
@@ -933,6 +940,66 @@
                 max-width: 28rem;
                 min-width: unset;
             }
+        }
+
+        /* ========== HAMBURGER BUTTON ========== */
+        #hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem 0.5rem;
+            line-height: 0;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== MOBILE MENU ========== */
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            position: absolute;
+            top: calc(100% + 0.6rem);
+            left: 0;
+            right: 0;
+            background-color: #000;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 0.8rem 4vw 1rem;
+            z-index: 1001;
+            box-sizing: border-box;
+        }
+
+        #mobile-menu.open {
+            display: flex;
+        }
+
+        #mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.6rem 0;
+            transition: color 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        #mobile-menu a:hover {
+            color: var(--neon-blue);
+        }
+
+        @media (min-width: 1024px) {
+            #hamburger { display: none !important; }
+            #mobile-menu { display: none !important; }
+            .nav-links { display: flex !important; }
         }
 
     </style>
@@ -1041,6 +1108,15 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Pilotkunde werden – honeypex für Betriebe",
+  "url": "https://honeypex.com/mehr.html",
+  "description": "Werden Sie Pilotkunde bei honeypex und gestalten Sie die Zukunft des Prüfpflichten-Managements mit."
+}
+</script>
 
 </head>
 <body>
@@ -1051,25 +1127,50 @@
     <header class="navbar">
         <div class="logo-nav">
             <a href="index.html">
-                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img">
+                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img" width="180" height="48" fetchpriority="high">
             </a>        
         </div>
         <div class="nav-links">
             <div class="divider"></div>
-            <a href="index.html#features">FEATURES</a>            
+            <a href="index.html#features">FEATURES</a>
             <div class="divider"></div>
-            <a href="index.html#umfrage">UMFRAGE</a>           
+            <a href="demo.html">DEMO</a>
             <div class="divider"></div>
-            <a href="mehr.html">MEHR</a>    
+            <a href="elektrobetriebe.html">ELEKTROBETRIEBE</a>
+            <div class="divider"></div>
+            <a href="preise.html">PREISE</a>
+            <div class="divider"></div>
+            <a href="index.html#umfrage">UMFRAGE</a>
+            <div class="divider"></div>
+            <a href="mehr.html" aria-current="page">MEHR</a>
+        </div>
+        <button id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+            <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div id="mobile-menu">
+            <a href="index.html#features">FEATURES</a>
+            <a href="demo.html">DEMO</a>
+            <a href="elektrobetriebe.html">ELEKTROBETRIEBE</a>
+            <a href="preise.html">PREISE</a>
+            <a href="index.html#umfrage">UMFRAGE</a>
+            <a href="mehr.html" aria-current="page">MEHR</a>
         </div>
     </header>
 
     <div class="global-site-container">
-        <div class="content-block-pilot" id="#mehr">
+        <div class="content-block-pilot" id="mehr">
             
             <div class="pilot-header-grid">
                 <div class="pilot-header-left">
-                    <img src="img/projektlogo-single.webp" alt="Proyecto honeypex — logo" class="pilot-logo" loading="lazy">
+                    <img src="img/projektlogo-single.webp" alt="honeypex Projektlogo" class="pilot-logo" width="320" height="320">
                 </div>
                 <div class="pilot-header-center">
                     <h1 class="pilot-title">GEMEINSAM<br> IN DIE ZUKUNFT</h1>
@@ -1358,7 +1459,7 @@
                 </p>
             
                 <a href="https://forms.office.com/e/uSaCUGhR88" target="_blank" class="pilot-cta-button">
-                    <img src="img/button-pilotkunde.webp" alt="Pilotkunde werden" loading="lazy">
+                    <img src="img/button-pilotkunde.webp" alt="Pilotkunde werden" width="280" height="80" loading="lazy">
                 </a>
             
             </div>
@@ -1368,12 +1469,13 @@
     </div>
     <footer class="navbar-umfrage">
         <div class="nav-links-umfrage">
-            <a href="kontakt.html">KONTAKT</a>           
+            <a href="kontakt.html">KONTAKT</a>
             <div class="divider-umfrage"></div>
-            <a href="kontakt.html#datenschutz">DATENSCHUTZ</a>           
+            <a href="kontakt.html#datenschutz">DATENSCHUTZ</a>
             <div class="divider-umfrage"></div>
             <a href="kontakt.html#impressum">IMPRESSUM</a>
-            </footer>
+        </div>
+    </footer>
     </div><!-- .scroll-wrapper -->
     <script>
 
@@ -1458,6 +1560,41 @@
               }
             }
           });
+
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            var iconOpen = document.getElementById('icon-open');
+            var iconClose = document.getElementById('icon-close');
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open'); iconOpen.style.display = 'block'; iconClose.style.display = 'none';
+            } else {
+                menu.classList.add('open'); iconOpen.style.display = 'none'; iconClose.style.display = 'block';
+            }
+        }
+        document.addEventListener('click', function(e) {
+            var menu = document.getElementById('mobile-menu');
+            var header = document.querySelector('header.navbar');
+            if (!menu || !header) return;
+            if (menu.classList.contains('open') && !header.contains(e.target)) {
+                menu.classList.remove('open'); document.getElementById('icon-open').style.display = 'block'; document.getElementById('icon-close').style.display = 'none';
+            }
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var menu = document.getElementById('mobile-menu');
+                menu.classList.remove('open'); document.getElementById('icon-open').style.display = 'block'; document.getElementById('icon-close').style.display = 'none';
+            });
+        });
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                var menu = document.getElementById('mobile-menu');
+                if (menu && menu.classList.contains('open')) {
+                    menu.classList.remove('open');
+                    var io = document.getElementById('icon-open'); var ic = document.getElementById('icon-close');
+                    if (io) io.style.display = 'block'; if (ic) ic.style.display = 'none';
+                }
+            }
+        });
 
     </script>
 </body>

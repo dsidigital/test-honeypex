@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#dfeaff">
-    <title>Prüfpflichten &amp; Fristen digital verwalten | honeypex für KMU</title>
+    <title>Prüfpflichten &amp; Fristen digital verwalten | honeypex — für KMU</title>
     <meta name="description" content="UVV, HU-Fristen &amp; Führerscheinkontrolle zentral verwalten. Ohne Excel-Chaos. Für KMU ab 25 Mitarbeitenden. 30 Tage kostenlos testen →">
     <link rel="canonical" href="https://honeypex.com/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="honeypex">
     <meta property="og:url" content="https://honeypex.com/">
-    <meta property="og:title" content="Prüfpflichten &amp; Fristen digital verwalten | honeypex für KMU">
+    <meta property="og:title" content="Prüfpflichten &amp; Fristen digital verwalten | honeypex — für KMU">
     <meta property="og:description" content="UVV, HU-Fristen &amp; Führerscheinkontrolle zentral verwalten. Ohne Excel-Chaos. Für KMU ab 25 Mitarbeitenden.">
-    <meta property="og:image" content="https://honeypex.com/img/projektlogo-single.webp">
+    <meta property="og:image" content="https://honeypex.com/img/og-honeypex.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Prüfpflichten &amp; Fristen digital verwalten | honeypex">
+    <meta name="twitter:title" content="Prüfpflichten &amp; Fristen digital verwalten | honeypex — für KMU">
     <meta name="twitter:description" content="UVV, HU-Fristen &amp; Führerscheinkontrolle zentral verwalten. Für KMU ab 25 Mitarbeitenden.">
-    <meta name="twitter:image" content="https://honeypex.com/img/projektlogo-single.webp">
-    <link rel="icon" href="img/projektlogo-single.webp" type="image/webp">
-    <link rel="apple-touch-icon" href="img/projektlogo-single.webp">
+    <meta name="twitter:image" content="https://honeypex.com/img/og-honeypex.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Critical paint: evita flash negro antes de cargar imágenes/CSS -->
     <style>
         html, body { background-color: #dfeaff; }
@@ -68,6 +74,7 @@
             width: 100%;
             position: relative;
             background-color: #dfeaff;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -145,7 +152,7 @@
             border-radius: 50px;
             display: flex;
             align-items: center;
-            padding: 1vh 4vw;
+            padding: 0.5vh 4vw;
             z-index: 1000;
             border: 1px solid #333;
             width: 92%;
@@ -171,16 +178,18 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: clamp(0.8rem, 2.5vw, 2rem);
+            gap: clamp(0.45rem, 1.3vw, 1.4rem);
+            flex-wrap: nowrap;
         }
         
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: clamp(0.65rem, 1.8vw, 0.9rem);
-            letter-spacing: 0.05em;
+            font-size: clamp(0.6rem, 1.4vw, 0.82rem);
+            letter-spacing: 0.04em;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         .nav-links a:hover { color: var(--neon-blue); }
 
@@ -506,20 +515,23 @@
             .navbar {
                 width: 92%;
                 max-width: 92%;
-                padding: 1vh 3vw;
+                padding: 0.2vh 4vw;
             }
 
             .logo-nav-img {
-                width: clamp(6rem, 16vw, 8rem);
+                width: clamp(7rem, 18vw, 9rem);
             }
 
             .nav-links {
-                gap: clamp(0.6rem, 3vw, 1rem);
+                gap: clamp(0.45rem, 1.3vw, 1.4rem);
             }
 
             .nav-links a {
-                font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+                font-size: clamp(0.6rem, 1.4vw, 0.82rem);
             }
+
+            .scroll-wrapper { scroll-padding-top: calc(2vh + 70px); }
+            [id] { scroll-margin-top: calc(2vh + 70px); }
 
             .navbar-umfrage {
                 width: 92%;
@@ -627,7 +639,7 @@
             .navbar {
                 width: 92%;
                 max-width: 92%;
-                padding: 1.2vh 3vw;
+                padding: 0.6vh 3vw;
             }
 
             .navbar-umfrage {
@@ -715,14 +727,14 @@
 
             .navbar {
                 width: auto;
-                max-width: 1000px;
-                padding: 1.2vh 2.5vw;
+                max-width: 1200px;
+                padding: 0.6vh 2.5vw;
                 top: 3vh;
             }
 
             .navbar-umfrage {
                 width: auto;
-                max-width: 800px;
+                max-width: 78vw;
                 padding: 1vh 2vw;
                 bottom: 3vh;
             }
@@ -1018,6 +1030,21 @@
             }
         }
 
+        .feature-more-link {
+            display: inline-block;
+            margin-top: 1.2vh;
+            color: var(--neon-blue);
+            font-weight: 700;
+            font-size: clamp(0.85rem, 2.2vw, 1rem);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.2s, letter-spacing 0.2s;
+        }
+        .feature-more-link:hover {
+            color: var(--neon-purple);
+            letter-spacing: 0.08em;
+        }
+
         /* ========================================
            FIX DISPOSITIVOS TÁCTILES
         ======================================== */
@@ -1072,11 +1099,10 @@
             }
         }
 
-        /* Navbar superior: centrado consistente en movil/tablet */
+        /* Navbar superior: consistente en movil/tablet */
         @media (max-width: 1023px) {
             .navbar {
-                justify-content: center;
-                gap: clamp(0.5rem, 2vw, 1.2rem);
+                justify-content: space-between;
             }
 
             .logo-nav {
@@ -1085,17 +1111,11 @@
             }
 
             .nav-links {
-                justify-content: center;
-                gap: clamp(0.55rem, 2.4vw, 1rem);
+                display: none !important;
             }
 
-            .nav-links .divider {
-                display: block;
-                width: 1px;
-                min-width: 1px;
-                height: 2.4vh;
-                background-color: #0044ff;
-                flex-shrink: 0;
+            #hamburger {
+                display: flex !important;
             }
 
             .navbar-umfrage {
@@ -1105,7 +1125,121 @@
             }
         }
 
+        /* ========== HAMBURGER BUTTON ========== */
+        #hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem 0.5rem;
+            line-height: 0;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== MOBILE MENU ========== */
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            position: absolute;
+            top: calc(100% + 0.6rem);
+            left: 0;
+            right: 0;
+            background-color: #000;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 0.8rem 4vw 1rem;
+            z-index: 1001;
+            box-sizing: border-box;
+        }
+
+        #mobile-menu.open {
+            display: flex;
+        }
+
+        #mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.6rem 0;
+            transition: color 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        #mobile-menu a:hover {
+            color: var(--neon-blue);
+        }
+
+        @media (min-width: 1024px) {
+            #hamburger {
+                display: none !important;
+            }
+            #mobile-menu {
+                display: none !important;
+            }
+            .nav-links {
+                display: flex !important;
+            }
+        }
+
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was kostet honeypex für KMU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "honeypex ist transparent bepreist und speziell für KMU ab 25 Mitarbeitenden entwickelt. Ein kostenloser 30-Tage-Test ist ohne Kreditkarte möglich."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche UVV-Prüfungen kann honeypex verwalten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "honeypex unterstützt UVV-Prüfungen nach DGUV Vorschrift 70 für Fuhrparks sowie Prüfungen für sicherheitsrelevante Betriebsmittel wie Feuerlöscher und Sicherheitsbeleuchtung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie funktioniert die Führerscheinkontrolle mit honeypex?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "honeypex organisiert regelmäßige Führerscheinkontrollen für Mitarbeitende, erinnert automatisch an fällige Prüfungen und dokumentiert alle Nachweise revisionssicher."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann honeypex HU-Fristen für Firmenfahrzeuge überwachen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, honeypex überwacht alle HU-Fristen zentral, warnt frühzeitig vor ablaufenden Terminen und sorgt für maximale Fahrzeugverfügbarkeit im Fuhrpark."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Für welche Branchen ist honeypex geeignet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "honeypex eignet sich besonders für Elektrobetriebe, Baugewerbe, Logistikunternehmen, Werkstätten, Facility-Management und Gesundheitseinrichtungen mit Fahrzeugflotten — für KMU ab 25 Mitarbeitenden."
+      }
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1124,7 +1258,10 @@
         "contactType": "customer support",
         "url": "https://honeypex.com/kontakt.html"
       },
-      "sameAs": []
+      "sameAs": [
+        "https://wisepex.com",
+        "https://www.linkedin.com/company/wisepex/"
+      ]
     },
     {
       "@type": "SoftwareApplication",
@@ -1136,30 +1273,11 @@
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "EUR",
-        "description": "30 Tage kostenlos testen"
+        "description": "30-Tage-Testzeitraum – kostenlos und unverbindlich",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31"
       },
       "url": "https://honeypex.com"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Für wen ist honeypex geeignet?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "honeypex ist für Betriebe ab 25 Mitarbeitenden geeignet, die Prüfpflichten, HU-Fristen und Fuhrparkmanagement digital verwalten möchten."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Was kostet honeypex?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "honeypex kann 30 Tage kostenlos getestet werden. Anschließend gibt es bezahlbare Abos für KMU."
-          }
-        }
-      ]
     }
   ]
 }
@@ -1172,22 +1290,47 @@
     <header class="navbar">
         <div class="logo-nav">
             <a href="index.html">
-                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img">
+                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img" width="180" height="48" fetchpriority="high">
             </a>        
         </div>
         <div class="nav-links">
             <div class="divider"></div>
-            <a href="#features">FEATURES</a>            
+            <a href="#features">FEATURES</a>
             <div class="divider"></div>
-            <a href="#umfrage">UMFRAGE</a>            
+            <a href="demo.html">DEMO</a>
             <div class="divider"></div>
-            <a href="mehr.html">MEHR</a>        
+            <a href="elektrobetriebe.html">ELEKTROBETRIEBE</a>
+            <div class="divider"></div>
+            <a href="preise.html">PREISE</a>
+            <div class="divider"></div>
+            <a href="#umfrage">UMFRAGE</a>
+            <div class="divider"></div>
+            <a href="mehr.html">MEHR</a>
+        </div>
+        <button id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+            <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div id="mobile-menu">
+            <a href="#features">FEATURES</a>
+            <a href="demo.html">DEMO</a>
+            <a href="elektrobetriebe.html">ELEKTROBETRIEBE</a>
+            <a href="preise.html">PREISE</a>
+            <a href="#umfrage">UMFRAGE</a>
+            <a href="mehr.html">MEHR</a>
         </div>
     </header>
 
     <div class="scroll-wrapper">
     <div class="global-site-container">
-        <img src="img/projektlogo-single.webp" alt="Projekt Honeypex" class="main-logo-fixed">
+        <img src="img/projektlogo-single.webp" alt="Projekt Honeypex" class="main-logo-fixed" width="320" height="320" fetchpriority="high">
 
         <div class="ppt-container">
         <section>
@@ -1200,7 +1343,7 @@
                             <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
                         </svg>
                     </div>
-                    <p class="intro-subtitle">Scrollen, Überblick verschaffen & Feedback geben</p>
+                    <p class="intro-subtitle">Für Fuhrparkmanager, Betriebsleiter &amp; HSE-Verantwortliche · Prüfpflichten im Griff · Ab 25 Mitarbeitenden</p>
                 </div>
             </div>
         </section>
@@ -1208,13 +1351,13 @@
         <!-- BLOQUE 1 -->
         <section id="features">
             <div class="content-block">
-                <h2>KEIN IT-GROßPROJEKT – BEZAHLBAR AUCH FÜR KMU</h2>
+                <h2>Kein IT-Großprojekt – transparent bepreist für KMU ab 25 Mitarbeitenden</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </div>
                     <div class="content-text">
-                        <span class="brand-name">honeype<span class="brand-x">x</span></span> ist stand-alone, klar abgegrenzt und transparent bepreist. Fristen bleiben sichtbar, Zuständigkeiten klar, Nachweise jederzeit verfügbar. Prüfpflichten im Griff – ohne Excel-Chaos, ohne Projekt-Marathon, ohne Kostenüberraschungen.
+                        <span class="brand-name">honeype<span class="brand-x">x</span></span> ist stand-alone, klar abgegrenzt und transparent bepreist – für Elektrobetriebe, Baugewerbe, Werkstätten und Logistik. Prüfpflichten im Griff: ohne Excel-Chaos, ohne Haftungsrisiko, ohne Projekt-Marathon. Fristen bleiben sichtbar, Zuständigkeiten klar, Nachweise jederzeit verfügbar.
                     </div>
                 </div>
             </div>
@@ -1223,14 +1366,15 @@
         <!-- BLOQUE 2 -->
         <section id="block-2">
             <div class="content-block">
-                <h2>HU-FRISTENMANAGEMENT FÜR FIRMENFAHRZEUGE</h2>
+                <h2>HU-Fristenmanagement für Firmenfahrzeuge – digital &amp; ohne Excel</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </div>
                     <div class="content-text">
-                        Alle HU-Fristen zentral überwacht. <span class="brand-name">honeype<span class="brand-x">x</span></span> macht Risiken früh sichtbar und zeigt klaren Handlungsbedarf. Mehr Verfügbarkeit, weniger Aufwand, volle Planungssicherheit.
-
+                        Alle HU-Fristen zentral überwacht. <span class="brand-name">honeype<span class="brand-x">x</span></span> macht Risiken früh sichtbar und zeigt klaren Handlungsbedarf. Mehr Verfügbarkeit, weniger Aufwand, volle Planungssicherheit. <span class="brand-name">honeype<span class="brand-x">x</span></span> überwacht HU-Fristen digital, erinnert rechtzeitig und hält alle Prüfnachweise zentral abrufbar — für Fuhrparks ab 5 Fahrzeugen.
+                        <a href="hu-fristen.html" class="feature-more-link" aria-label="Mehr über HU-Fristenmanagement erfahren">Mehr erfahren →</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1238,7 +1382,7 @@
         <!-- BLOQUE 3 -->
         <section id="block-3">
             <div class="content-block">
-                <h2>EINSATZORTABHÄNGIGE PRÜFINTERVALLE</h2>
+                <h2>Einsatzortabhängige Prüfintervalle</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1253,7 +1397,7 @@
         <!-- BLOQUE 4 -->
         <section id="block-4">
             <div class="content-block">
-                <h2>PRÜFMANAGEMENT FÜR SICHERHEITSRELEVANTES</h2>
+                <h2>Prüfmanagement für sicherheitsrelevante Arbeitsmittel</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1268,13 +1412,14 @@
         <!-- BLOQUE 5 -->
         <section id="block-5">
             <div class="content-block">
-                <h2>UVV-PRÜFMANAGEMENT FÜR DEN FUHRPARK</h2>
+                <h2>UVV-Prüfung nach DGUV Vorschrift 70 — Fristen &amp; Nachweise digital verwalten</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </div>
                     <div class="content-text">
-                        UVV-Prüfungen, Fristen und Zuständigkeiten zentral im Blick. <span class="brand-name">honeype<span class="brand-x">x</span></span> erinnert deutlich an anstehende Prüfungen und hält Nachweise gebündelt. Mehr Rechtssicherheit, weniger Organisationsrisiko, saubere Grundlage im Ernstfall.
+                        UVV-Prüfungen nach DGUV Vorschrift 70 strukturiert planen und dokumentieren. UVV-Prüfungen, Fristen und Zuständigkeiten zentral im Blick. <span class="brand-name">honeype<span class="brand-x">x</span></span> erinnert deutlich an anstehende Prüfungen und hält Nachweise gebündelt. Mehr Rechtssicherheit, weniger Organisationsrisiko, saubere Grundlage im Ernstfall.
+                        <a href="uvv-pruefung.html" class="feature-more-link" aria-label="Mehr über UVV-Prüfung erfahren">Mehr erfahren →</a>
                     </div>
                 </div>
             </div>
@@ -1283,13 +1428,14 @@
         <!-- BLOQUE 6 -->
         <section id="block-6">
             <div class="content-block">
-                <h2>FÜHRERSCHEINKONTROLLE FÜR MITARBEITENDE</h2>
+                <h2>Führerscheinkontrolle Software – Pflichten für Arbeitgeber digital erfüllen</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </div>
                     <div class="content-text">
                         Regelmäßige Führerscheinkontrollen klar organisiert und nachvollziehbar dokumentiert. <span class="brand-name">honeype<span class="brand-x">x</span></span> erinnert an fällige Nachweise und hält Prüfungen zentral vor. Weniger Verwaltungsaufwand, saubere Nachweise, klare Absicherung für Unternehmen.
+                        <a href="fuehrerscheinkontrolle.html" class="feature-more-link" aria-label="Mehr über Führerscheinkontrolle erfahren">Mehr erfahren →</a>
                     </div>
                 </div>
             </div>
@@ -1298,7 +1444,7 @@
         <!-- BLOQUE 7 -->
         <section id="block-7">
             <div class="content-block">
-                <h2>RESERVIERUNG VON FAHRZEUGEN & MASCHINEN</h2>
+                <h2>Reservierung von Fahrzeugen &amp; Maschinen</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1313,7 +1459,7 @@
         <!-- BLOQUE 8 -->
         <section id="block-8">
             <div class="content-block">
-                <h2>SCHADENSMANAGEMENT</h2>
+                <h2>Schadensmanagement</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1328,7 +1474,7 @@
         <!-- BLOQUE 9 - UMFRAGE -->
         <section id="umfrage">
             <div class="content-block">
-                <h2>UMFRAGE</h2>
+                <h2>Umfrage</h2>
                 <div class="content-columns">
                     <div class="content-icon">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
@@ -1341,22 +1487,22 @@
                         <a href="https://forms.office.com/e/y8LCYZbFgk"
                            target="_blank"
                            class="survey-button">
-                            <img src="img/button-umfrage.webp" alt="An Umfrage teilnehmen">
+                            <img src="img/button-umfrage.webp" alt="An Umfrage teilnehmen" width="280" height="80" loading="lazy">
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="navbar-umfrage">
+        <footer class="navbar-umfrage">
             <div class="nav-links-umfrage">
-                <a href="kontakt.html">KONTAKT</a>                    
+                <a href="kontakt.html">KONTAKT</a>
                 <div class="divider-umfrage"></div>
-                <a href="kontakt.html#datenschutz">DATENSCHUTZ</a>                    
+                <a href="kontakt.html#datenschutz">DATENSCHUTZ</a>
                 <div class="divider-umfrage"></div>
-                <a href="kontakt.html#impressum">IMPRESSUM</a>                
+                <a href="kontakt.html#impressum">IMPRESSUM</a>
             </div>
-        </div>
+        </footer>
 
     </div>
 </div>
@@ -1493,13 +1639,67 @@
             if (window.location.hash) {
               const target = document.querySelector(window.location.hash);
               const wrapper = document.querySelector('.scroll-wrapper');
+              const navbar = document.querySelector('header.navbar');
               if (target && wrapper) {
                 setTimeout(() => {
-                  wrapper.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+                  const navH = navbar ? navbar.offsetHeight : 0;
+                  wrapper.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' });
                 }, 100);
               }
             }
           });
+
+        // ========== MENÚ HAMBURGUESA ==========
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            var iconOpen = document.getElementById('icon-open');
+            var iconClose = document.getElementById('icon-close');
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                iconOpen.style.display = 'block';
+                iconClose.style.display = 'none';
+            } else {
+                menu.classList.add('open');
+                iconOpen.style.display = 'none';
+                iconClose.style.display = 'block';
+            }
+        }
+
+        // Cerrar al hacer clic fuera del header
+        document.addEventListener('click', function(e) {
+            var menu = document.getElementById('mobile-menu');
+            var header = document.querySelector('header.navbar');
+            if (!menu || !header) return;
+            if (menu.classList.contains('open') && !header.contains(e.target)) {
+                menu.classList.remove('open');
+                document.getElementById('icon-open').style.display = 'block';
+                document.getElementById('icon-close').style.display = 'none';
+            }
+        });
+
+        // Cerrar al hacer clic en un enlace del menú móvil
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var menu = document.getElementById('mobile-menu');
+                menu.classList.remove('open');
+                document.getElementById('icon-open').style.display = 'block';
+                document.getElementById('icon-close').style.display = 'none';
+            });
+        });
+
+        // Cerrar al superar 1024px de ancho
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                var menu = document.getElementById('mobile-menu');
+                if (menu && menu.classList.contains('open')) {
+                    menu.classList.remove('open');
+                    var iconOpen = document.getElementById('icon-open');
+                    var iconClose = document.getElementById('icon-close');
+                    if (iconOpen) iconOpen.style.display = 'block';
+                    if (iconClose) iconClose.style.display = 'none';
+                }
+            }
+        });
 
     </script>
 </body>

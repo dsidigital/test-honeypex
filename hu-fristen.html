@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#dfeaff">
+    <title>HU-Fristen Fuhrpark digital verwalten – Software für KMU | honeypex</title>
+    <meta name="description" content="HU-Fristen für Firmenfahrzeuge zentral überwachen, automatisch erinnert werden und Nachweise sicher dokumentieren. honeypex – für KMU ab 25 Mitarbeitenden.">
+    <link rel="canonical" href="https://honeypex.com/hu-fristen.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="honeypex">
+    <meta property="og:url" content="https://honeypex.com/hu-fristen.html">
+    <meta property="og:title" content="HU-Fristen Fuhrpark digital – Fristenverwaltung Software | honeypex">
+    <meta property="og:description" content="HU-Fristen für Firmenfahrzeuge zentral verwalten. Keine vergessenen Hauptuntersuchungen mehr. honeypex für KMU.">
+    <meta property="og:image" content="https://honeypex.com/img/og-honeypex.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HU-Fristen Fuhrpark digital – Fristenverwaltung Software | honeypex">
+    <meta name="twitter:description" content="HU-Fristen für Firmenfahrzeuge zentral verwalten. Keine vergessenen Hauptuntersuchungen mehr. honeypex für KMU.">
+    <meta name="twitter:image" content="https://honeypex.com/img/og-honeypex.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+        html, body { background-color: #dfeaff; }
+        .brand-name { font-weight: bolder; }
+        .brand-x { color: #0000ff; font-weight: bolder; }
+    </style>
+    <link rel="preload" as="image" href="img/honeypex-background.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/honeypex-background-mobile.webp" media="(max-width: 900px)" fetchpriority="high">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "HU-Fristen Fuhrpark digital verwalten",
+  "url": "https://honeypex.com/hu-fristen.html",
+  "description": "Software zur digitalen Verwaltung von HU-Fristen für Firmenfahrzeuge im Fuhrpark.",
+  "mainEntity": {
+    "@type": "SoftwareApplication",
+    "name": "honeypex",
+    "applicationCategory": "BusinessApplication",
+    "featureList": "HU-Fristenmanagement, Fuhrparkmanagement, automatische Erinnerungen, Prüfnachweis-Dokumentation"
+  }
+}
+</script>
+    <style>
+      :root {
+        --neon-blue: #1304ea;
+        --neon-purple: #8137ff;
+        --logo-width-desktop: 35vw;
+        --content-gap-bottom: 12vh;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body {
+        margin: 0; padding: 0; height: 100%;
+        font-family: Arial, sans-serif;
+        overflow: hidden; overflow-x: hidden;
+        width: 100%; position: relative;
+        background-color: #dfeaff;
+      }
+      body { background: transparent; }
+      .scroll-wrapper {
+        height: 100vh; overflow-y: scroll;
+        scroll-behavior: smooth; position: relative;
+        scrollbar-width: auto;
+        scrollbar-color: rgba(0,0,0,0.3) transparent;
+      }
+      .scroll-wrapper::-webkit-scrollbar { width: 8px; }
+      .scroll-wrapper::-webkit-scrollbar-track { background: transparent; }
+      .scroll-wrapper::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.3); border-radius: 4px; }
+      .scroll-wrapper::-webkit-scrollbar-thumb:hover { background-color: rgba(0,0,0,0.5); }
+      .tunnel-bg {
+        position: fixed; top: 0; left: 0;
+        width: 100vw; height: 100vh; height: 100dvh;
+        background-image: url("img/honeypex-background.webp");
+        background-size: cover; background-position: center center;
+        background-repeat: no-repeat;
+        z-index: 0; pointer-events: none;
+        -webkit-transform: translateZ(0); transform: translateZ(0);
+      }
+      .global-site-container {
+        position: relative; z-index: 2;
+        width: 92%; max-width: 112.5rem;
+        margin: 0 auto; display: flex;
+        flex-direction: column; min-height: 100vh;
+      }
+      .navbar {
+        position: fixed; top: 2vh; left: 50%;
+        transform: translateX(-50%);
+        background-color: #000; border-radius: 50px;
+        display: flex; align-items: center;
+        padding: 0.5vh 4vw; z-index: 1000;
+        border: 1px solid #333; width: 92%;
+        max-width: 92vw; justify-content: space-between;
+        box-sizing: border-box;
+      }
+      .logo-nav { font-weight: bold; color: white; font-size: clamp(1rem, 3vw, 1.5rem); display: flex; align-items: center; }
+      .logo-nav span { color: var(--neon-purple); margin-left: 2px; }
+      .logo-nav-img { width: clamp(7rem, 12vw, 10rem); object-fit: contain; }
+      .nav-links { display: flex; align-items: center; gap: clamp(0.45rem, 1.3vw, 1.4rem); flex-wrap: nowrap; }
+      .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: clamp(0.6rem, 1.4vw, 0.82rem); letter-spacing: 0.04em; transition: color 0.3s; white-space: nowrap; }
+      .nav-links a:hover { color: var(--neon-blue); }
+      .divider { display: none; }
+      .navbar-umfrage {
+        position: fixed; left: 50%; bottom: 2vh;
+        background-color: #000; border-radius: 3em;
+        display: flex; align-items: center; justify-content: center;
+        padding: 1.5vh 1.5vw; z-index: 1000;
+        border: 1px solid #333; width: 92%;
+        max-width: 36vw; min-width: 18rem;
+        box-sizing: border-box; opacity: 0; visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s;
+        transform: translate(-50%, 24px);
+      }
+      .navbar-umfrage.visible { opacity: 1; visibility: visible; -webkit-transform: translate(-50%, 0); transform: translate(-50%, 0); }
+      .nav-links-umfrage { display: flex; align-items: center; justify-content: center; width: 100%; gap: 1.5vw; }
+      .nav-links-umfrage a { color: white; text-decoration: none; font-weight: bold; font-size: clamp(0.65rem, 1.8vw, 0.9rem); letter-spacing: 0.05em; transition: color 0.3s; display: flex; align-items: center; justify-content: center; }
+      .nav-links-umfrage a:hover { color: var(--neon-blue); }
+      .navbar-umfrage .divider-umfrage { display: block; width: 1px; min-width: 1px; height: 3vh; background-color: var(--neon-blue); opacity: 1; flex-shrink: 0; }
+      .content-block-pilot {
+        background: rgba(255,255,255,0.3); backdrop-filter: blur(0.1875rem);
+        width: 100%; max-width: 90vw; margin: 18vh auto 12vh;
+        padding: 4.5rem; border-radius: 1.875rem;
+        border: 0.0625rem solid rgba(255,255,255,0.35);
+        box-sizing: border-box; -webkit-backdrop-filter: blur(0.1875rem);
+      }
+      .pilot-header-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; }
+      .pilot-logo { width: 13rem; object-fit: contain; }
+      h1.pilot-title, .pilot-title { font-size: clamp(3.5rem, 3.6vw, 4.5rem); text-transform: uppercase; text-align: center; color: #0000ff; width: 100%; display: block; margin: 0 auto; }
+      .divider-line { width: 80%; height: 0.09375rem; background-color: #0000ff; margin: 10vh auto; }
+      .legal-section { margin: 6vh auto; padding: 0; max-width: 100%; }
+      .legal-title { font-size: clamp(3.5rem, 3.6vw, 4.5rem); font-weight: 400; margin: 0 auto; text-transform: uppercase; line-height: 1.2; text-align: center; color: #0000FF; width: 100%; display: block; box-sizing: border-box; padding-inline: 0.5vw; overflow-wrap: anywhere; }
+      .legal-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); margin: 6vh auto; padding: 0; gap: 4vw; }
+      .legal-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); margin: 6vh auto; padding: 0; gap: 4vw; width: 100%; max-width: 100%; }
+      .legal-grid-features { gap: 2vw; }
+      .legal-block { margin: 6vh auto; padding: 0; max-width: 100%; }
+      .legal-col { min-width: 0; box-sizing: border-box; }
+      .legal-col h3 { margin: 0 0 1vh 0; font-size: 1.3rem; font-weight: 600; text-transform: uppercase; text-align: center; color: #0000FF; overflow-wrap: anywhere; }
+      .legal-block h3 { font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 300; margin: 0 auto; text-transform: uppercase; line-height: 1.2; text-align: center; color: #0000FF; width: 100%; display: block; box-sizing: border-box; padding-inline: 0.5vw; overflow-wrap: anywhere; }
+      .legal-col p { margin: 0.6vh 0; font-size: 1rem; font-weight: bold; color: var(--text-dark); text-decoration: none; text-align: center; overflow-wrap: anywhere; }
+      .legal-block p { font-size: 1rem; line-height: 1.6; color: var(--text-dark); margin-bottom: 1.6vh; max-width: 100%; text-align: left; }
+      .divider-line { max-width: 80%; margin-left: auto; margin-right: auto; box-sizing: border-box; }
+      @media (max-width: 900px) { .tunnel-bg { background-image: url("img/honeypex-background-mobile.webp"); background-position: center top; } }
+      @media (max-width: 768px) {
+        html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
+        .navbar { width: 92%; max-width: 92%; padding: 0.2vh 4vw; }
+        .logo-nav-img { width: clamp(7rem, 18vw, 9rem); }
+        .nav-links { gap: clamp(0.6rem, 3vw, 1rem); }
+        .nav-links a { font-size: clamp(0.6rem, 2.2vw, 0.75rem); }
+        .global-site-container { width: 92%; padding: 0; }
+        .content-block-pilot { width: 100%; max-width: 100%; margin: calc(6vh + 70px) auto 10rem auto; padding: 1.2rem 4vw; border-radius: 1.25rem; }
+        .pilot-header-grid { grid-template-columns: 1fr; gap: 0.4rem; margin-bottom: 0.5rem; text-align: center; }
+        .pilot-header-left, .pilot-header-center { justify-content: center; }
+        .pilot-logo { width: 19rem; margin: 0 auto; }
+        h1.pilot-title, .pilot-title { font-size: clamp(2rem, 8vw, 3rem); text-align: center; margin: 0; }
+        .legal-title { font-size: clamp(2rem, 8vw, 3rem); }
+        .legal-grid-4 { grid-template-columns: 1fr; padding: 0; gap: 3vh; }
+        .legal-grid-2 { grid-template-columns: 1fr; gap: 3vh; padding: 0 2vw; margin: 4vh auto; width: 100%; }
+        .legal-grid-2 .legal-col { width: 100%; margin-bottom: 0; }
+        .legal-grid-2 .legal-col h3 { font-size: 1.1rem; }
+        .legal-grid-2 .legal-col p { font-size: 0.95rem; line-height: 1.5; }
+        .legal-grid-features { gap: 3vh; }
+        .legal-section { padding: 0 1vw; margin: 4vh auto; }
+        .legal-block { padding: 0; margin: 4vh 0; }
+        .legal-block p, .legal-block ul { text-align: left; width: 100%; }
+        .divider-line { width: 84vw; margin: 6vh auto; }
+        .navbar-umfrage { width: 92%; max-width: 92%; min-width: unset; }
+        .scroll-wrapper { scroll-padding-top: calc(2vh + 70px); }
+        [id] { scroll-margin-top: calc(2vh + 70px); }
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .navbar { width: 92%; max-width: 92%; padding: 0.6vh 3vw; }
+        .navbar-umfrage { width: 92%; max-width: 70%; padding: 1vh 2vw; }
+        .divider { display: block; width: 1px; min-width: 1px; height: 3vh; background-color: #0044ff; }
+        .navbar-umfrage .divider-umfrage { display: block; width: 1px; min-width: 1px; height: 2.5vh; background-color: #0044ff; }
+      }
+      @media (min-width: 1024px) {
+        .navbar { width: auto; max-width: 1200px; padding: 0.6vh 2.5vw; top: 3vh; }
+        .navbar-umfrage { width: auto; max-width: 78vw; padding: 1vh 2vw; bottom: 3vh; }
+        .nav-links, .nav-links-umfrage { gap: 2vw; }
+        .divider { display: block; width: 1px; min-width: 1px; height: 3vh; background-color: #0044ff; }
+        .navbar-umfrage .divider-umfrage { width: 1px; min-width: 1px; height: 2.5vh; }
+        .logo-nav { margin-right: 2.5vw; }
+      }
+      @media (min-width: 1920px) { .navbar { max-width: 1400px; } .navbar-umfrage { max-width: 1200px; } .navbar-umfrage .divider-umfrage { width: 1px; min-width: 1px; } }
+      @media (max-width: 1023px) {
+        .navbar { justify-content: space-between; }
+        .logo-nav { margin-right: 0; flex-shrink: 0; }
+        .nav-links { display: none !important; }
+        #hamburger { display: flex !important; }
+        .navbar-umfrage { width: 82%; max-width: 28rem; min-width: unset; }
+      }
+      #hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem 0.5rem; line-height: 0; flex-shrink: 0; align-items: center; justify-content: center; }
+      #mobile-menu { display: none; flex-direction: column; gap: 0; position: absolute; top: calc(100% + 0.6rem); left: 0; right: 0; background-color: #000; border: 1px solid #333; border-radius: 16px; padding: 0.8rem 4vw 1rem; z-index: 1001; box-sizing: border-box; }
+      #mobile-menu.open { display: flex; }
+      #mobile-menu a { color: white; text-decoration: none; font-weight: bold; font-size: clamp(0.75rem, 2.5vw, 0.9rem); letter-spacing: 0.05em; text-transform: uppercase; padding: 0.6rem 0; transition: color 0.3s; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      #mobile-menu a:last-child { border-bottom: none; }
+      #mobile-menu a:hover { color: var(--neon-blue); }
+      @media (min-width: 1024px) { #hamburger { display: none !important; } #mobile-menu { display: none !important; } .nav-links { display: flex !important; } }
+    </style>
+</head>
+<body>
+    <div class="tunnel-bg"></div>
+
+    <header class="navbar">
+        <div class="logo-nav">
+            <a href="index.html">
+                <img src="img/honeypex-logo-wisepex.webp" alt="Logo Honeypex Wisepex" class="logo-nav-img" width="180" height="48" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-links">
+            <div class="divider"></div>
+            <a href="index.html#features">FEATURES</a>
+            <div class="divider"></div>
+            <a href="demo.html">DEMO</a>
+            <div class="divider"></div>
+            <a href="elektrobetriebe.html">ELEKTROBETRIEBE</a>
+            <div class="divider"></div>
+            <a href="preise.html">PREISE</a>
+            <div class="divider"></div>
+            <a href="index.html#umfrage">UMFRAGE</a>
+            <div class="divider"></div>
+            <a href="mehr.html">MEHR</a>
+        </div>
+        <button id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+            <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div id="mobile-menu">
+            <a href="index.html#features">FEATURES</a>
+            <a href="demo.html">DEMO</a>
+            <a href="elektrobetriebe.html">ELEKTROBETRIEBE</a>
+            <a href="preise.html">PREISE</a>
+            <a href="index.html#umfrage">UMFRAGE</a>
+            <a href="mehr.html">MEHR</a>
+        </div>
+    </header>
+
+    <div class="scroll-wrapper">
+    <div class="global-site-container">
+
+        <div class="content-block-pilot">
+
+            <div class="pilot-header-grid">
+                <div class="pilot-header-left">
+                    <img src="img/projektlogo-single.webp" alt="honeypex Projektlogo" class="pilot-logo" width="320" height="320" loading="lazy">
+                </div>
+                <div class="pilot-header-center">
+                    <h1 class="pilot-title">HU-FRISTEN</h1>
+                </div>
+                <div class="pilot-header-right"></div>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="legal-block">
+                <h2 class="legal-title" style="font-size: clamp(1.8rem, 2.8vw, 2.8rem); color: #0000FF;">HU-Fristen für Firmenfahrzeuge — nie wieder einen Termin verpassen</h2>
+                <p>
+                    Die Hauptuntersuchung (HU) ist für alle zulassungspflichtigen Fahrzeuge gesetzlich vorgeschrieben. Wer einen abgelaufenen HU-Sticker fährt, riskiert ein Bußgeld — und im schlimmsten Fall den Versicherungsschutz. Für Betriebe mit mehreren Fahrzeugen ist die manuelle Überwachung aller Fristen fehleranfällig und zeitintensiv.
+                </p>
+                <p>
+                    <span class="brand-name">honeype<span class="brand-x">x</span></span> überwacht alle HU-Fristen Ihres Fuhrparks automatisch. Das System erinnert rechtzeitig, dokumentiert durchgeführte Prüfungen und gibt Betriebsleitern und Fuhrparkmanagern jederzeit einen klaren Überblick — ohne Tabellenkalkulationen, ohne manuelles Nachhalten.
+                </p>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="legal-block">
+                <h3 class="legal-block" style="font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 300; text-transform: uppercase; color: #0000FF; text-align: center; margin-bottom: 3vh;">Warum HU-Fristen kritisch sind</h3>
+                <p>
+                    Im gewerblichen Fuhrpark ist ein abgelaufener HU-Termin mehr als eine Ordnungswidrigkeit. Bei einem Unfall mit einem Fahrzeug ohne gültige HU kann die Haftung auf das Unternehmen und im schlimmsten Fall auf die verantwortliche Person übergehen. Auch Versicherungsgesellschaften können im Schadensfall Leistungen kürzen oder verweigern, wenn nachweisbar ist, dass das Fahrzeug nicht ordnungsgemäß geprüft wurde.
+                </p>
+                <p>
+                    Fuhrparks mit mehr als fünf Fahrzeugen, unterschiedlichen Anschaffungsdaten und verschiedenen Prüfintervallen verlieren schnell den Überblick, wenn Fristen in Excel oder Papierkalendern verwaltet werden.
+                </p>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="legal-section">
+                <h2 class="legal-title" style="font-size: clamp(1.8rem, 2.8vw, 2.8rem);">So schützt honeypex Ihren Betrieb</h2>
+                <div class="legal-grid-2">
+                    <div class="legal-col">
+                        <h3>ZENTRALE FRISTEN-ÜBERSICHT</h3>
+                        <p>Alle Fahrzeuge, alle HU-Termine, alle Verantwortlichen auf einen Blick. Kein manuelles Suchen in Tabellen oder Ordnern.</p>
+                    </div>
+                    <div class="legal-col">
+                        <h3>AUTOMATISCHE ERINNERUNGEN</h3>
+                        <p><span class="brand-name">honeype<span class="brand-x">x</span></span> erinnert rechtzeitig vor dem HU-Termin, sodass genug Zeit für Terminplanung und Werkstatttermin bleibt.</p>
+                    </div>
+                    <div class="legal-col">
+                        <h3>NACHWEISFÜHRUNG</h3>
+                        <p>Durchgeführte HU-Prüfungen dokumentiert und revisionssicher gespeichert. Bei Betriebsprüfungen oder im Haftungsfall haben Sie alles sofort verfügbar.</p>
+                    </div>
+                    <div class="legal-col">
+                        <h3>PLANUNGSSICHERHEIT</h3>
+                        <p>Mehr Fahrzeugverfügbarkeit durch vorausschauende Planung. Ungeplante Ausfälle durch abgelaufene Fristen gehören der Vergangenheit an.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="legal-block">
+                <h3 class="legal-block" style="font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 300; text-transform: uppercase; color: #0000FF; text-align: center; margin-bottom: 3vh;">Für welche Betriebe ist honeypex ideal?</h3>
+                <ul style="text-align: left; line-height: 2; font-size: 1rem; font-weight: bold;">
+                    <li>Betriebe im Handwerk und Baugewerbe (Servicewagen, LKW, Anhänger)</li>
+                    <li>Logistikunternehmen mit Lieferflotten</li>
+                    <li>Elektrobetriebe und Installationsfirmen mit Außendienstfahrzeugen</li>
+                    <li>Pflegedienste und Sozialeinrichtungen mit Fahrzeugflotten</li>
+                    <li>Facility-Management-Unternehmen</li>
+                </ul>
+                <p>
+                    Ob fünf oder fünfzig Fahrzeuge — <span class="brand-name">honeype<span class="brand-x">x</span></span> skaliert mit Ihrem Betrieb und erfordert keine IT-Abteilung für die Einführung.
+                </p>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="legal-block" style="text-align: center;">
+                <h2 class="legal-block" style="font-size: clamp(1.6rem, 2.5vw, 2.5rem); font-weight: 300; text-transform: uppercase; color: #0000FF; text-align: center; margin-bottom: 3vh;">HU-Fristen endlich im Griff?</h2>
+                <p style="text-align: center; font-size: clamp(1rem, 1.5vw, 1.3rem); font-weight: bold; margin-bottom: 4vh;">
+                    Testen Sie <span class="brand-name">honeype<span class="brand-x">x</span></span> 30 Tage kostenlos — ohne Kreditkarte, ohne Risiko.
+                </p>
+                <p style="text-align: center;">
+                    <a href="index.html#umfrage" style="display: inline-block; background: #0000FF; color: #fff; font-weight: 700; padding: 1.2vh 3vw; border-radius: 50px; text-decoration: none; font-size: clamp(0.9rem, 1.5vw, 1.1rem); letter-spacing: 0.05em; transition: background 0.3s;">
+                        Jetzt an Umfrage teilnehmen →
+                    </a>
+                </p>
+                <p style="text-align: center; margin-top: 2vh;">
+                    Fragen? Wir helfen gerne: <a href="kontakt.html" style="color: #0000FF; font-weight: bold;">hello@wisepex.com</a>
+                </p>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="legal-section" style="text-align: center;">
+                <h2 class="legal-block" style="font-size: clamp(1.2rem, 1.8vw, 1.8rem); font-weight: 300; text-transform: uppercase; color: #0000FF; text-align: center; margin-bottom: 2vh;">Weitere Features</h2>
+                <div class="legal-grid-2 legal-grid-features">
+                    <div class="legal-col">
+                        <h3><a href="uvv-pruefung.html" style="color: #0000FF; text-decoration: none;">UVV-PRÜFUNG →</a></h3>
+                        <p>UVV-Prüfungen nach DGUV Vorschrift 70 digital und revisionssicher verwalten.</p>
+                    </div>
+                    <div class="legal-col">
+                        <h3><a href="fuehrerscheinkontrolle.html" style="color: #0000FF; text-decoration: none;">FÜHRERSCHEINKONTROLLE →</a></h3>
+                        <p>Regelmäßige Führerscheinprüfungen für Mitarbeitende organisiert und nachweisbar.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="navbar-umfrage">
+            <div class="nav-links-umfrage">
+                <a href="kontakt.html">KONTAKT</a>
+                <div class="divider-umfrage"></div>
+                <a href="kontakt.html#datenschutz">DATENSCHUTZ</a>
+                <div class="divider-umfrage"></div>
+                <a href="kontakt.html#impressum">IMPRESSUM</a>
+            </div>
+        </footer>
+
+    </div>
+    </div><!-- .scroll-wrapper -->
+
+    <script>
+        window.onbeforeunload = function () { window.scrollTo(0, 0); };
+        window.onload = function () {
+            const wrapper = document.querySelector('.scroll-wrapper');
+            if (wrapper) wrapper.scrollTop = 0;
+            window.scrollTo(0, 0);
+        };
+        if (history.scrollRestoration) history.scrollRestoration = 'manual';
+
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
+                const wrapper = document.querySelector('.scroll-wrapper');
+                if (targetSection && wrapper) {
+                    wrapper.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const globalSiteContainer = document.querySelector('.global-site-container');
+            const navUmfrage = document.querySelector('.navbar-umfrage');
+            if (!globalSiteContainer || !navUmfrage) return;
+            const wrapper = document.querySelector('.scroll-wrapper');
+            function checkScroll() {
+                if (!wrapper) return;
+                const scrollPosition = wrapper.scrollTop + wrapper.clientHeight;
+                const scrollHeight = wrapper.scrollHeight;
+                if (scrollHeight - scrollPosition < 120) {
+                    navUmfrage.classList.add('visible');
+                } else {
+                    navUmfrage.classList.remove('visible');
+                }
+            }
+            if (wrapper) wrapper.addEventListener('scroll', checkScroll);
+            window.addEventListener('resize', checkScroll);
+            checkScroll();
+        });
+
+        window.addEventListener("load", function () {
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                const wrapper = document.querySelector('.scroll-wrapper');
+                if (target && wrapper) {
+                    setTimeout(() => { wrapper.scrollTo({ top: target.offsetTop, behavior: 'smooth' }); }, 100);
+                }
+            }
+        });
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            var iconOpen = document.getElementById('icon-open');
+            var iconClose = document.getElementById('icon-close');
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open'); iconOpen.style.display = 'block'; iconClose.style.display = 'none';
+            } else {
+                menu.classList.add('open'); iconOpen.style.display = 'none'; iconClose.style.display = 'block';
+            }
+        }
+        document.addEventListener('click', function(e) {
+            var menu = document.getElementById('mobile-menu');
+            var header = document.querySelector('header.navbar');
+            if (!menu || !header) return;
+            if (menu.classList.contains('open') && !header.contains(e.target)) {
+                menu.classList.remove('open'); document.getElementById('icon-open').style.display = 'block'; document.getElementById('icon-close').style.display = 'none';
+            }
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var menu = document.getElementById('mobile-menu');
+                menu.classList.remove('open'); document.getElementById('icon-open').style.display = 'block'; document.getElementById('icon-close').style.display = 'none';
+            });
+        });
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                var menu = document.getElementById('mobile-menu');
+                if (menu && menu.classList.contains('open')) {
+                    menu.classList.remove('open');
+                    var io = document.getElementById('icon-open'); var ic = document.getElementById('icon-close');
+                    if (io) io.style.display = 'block'; if (ic) ic.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
